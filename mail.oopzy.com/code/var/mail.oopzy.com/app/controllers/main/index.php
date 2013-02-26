@@ -1,6 +1,8 @@
 <?php
-function _index($msg='Hello World!') {
-  $view = new View(APP_PATH.'views/layout.php');
-  $view->set('msg',$msg);
-  $view->dump();
+function _index($box='Enter your mailbox')
+{
+  $box = urldecode($box);
+
+  View::output_with_template('templates/main','index',array('box'=>$box));
 }
+

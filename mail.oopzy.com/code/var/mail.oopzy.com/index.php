@@ -14,13 +14,16 @@ error_reporting(E_ALL);
 // Madatory KISSMVC Settings (please configure)
 //===============================================
 define('APP_PATH','app/'); //with trailing slash pls
+define('VIEW_PATH','app/views/'); //with trailing slash pls
 define('WEB_FOLDER','/kissmvc/'); //with trailing slash pls
 
 //===============================================
 // Other Settings
 //===============================================
-$GLOBALS['sitename']='KISSMVC - Simple PHP MVC Framework';
-
+$GLOBALS['site_name']='oopzy spam fighter single use recycle email';
+$GLOBALS['jsdebug'] = true;
+$GLOBALS['namespace'] = 'oopzy';
+$GLOBALS['cache_param'] = time();
 //===============================================
 // Includes
 //===============================================
@@ -71,15 +74,14 @@ function getdbh() {
 // Autoloading for Business Classes
 //===============================================
 // Assumes Model Classes start with capital letters and Helpers start with lower case letters
-/*
+
 function __autoload($classname) {
   $a=$classname[0];
   if ($a >= 'A' && $a <='Z')
     require_once(APP_PATH.'models/'.$classname.'.php');
   else
-    require_once(APP_PATH.'helpers/'.$classname.'.php');  
+    require_once(APP_PATH.'helpers/'.$classname.'.php');
 }
-*/
 
 //===============================================
 // Start the controller
