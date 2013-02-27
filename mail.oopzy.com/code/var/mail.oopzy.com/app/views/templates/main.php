@@ -43,5 +43,8 @@ function debug(msg){
      Copyright &copy; <?php echo date('Y'); ?> oopzy.net All Rights Reserved | rSVN_REVISION
   </div>
 </div>
+
+<div id='server_stats'></div>
+
 </body>
 </html>

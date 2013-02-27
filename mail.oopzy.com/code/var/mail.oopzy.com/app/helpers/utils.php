@@ -1,6 +1,7 @@
 <?php
-Class Utils
+Class utils
 {
+
   public function json_indent($json) {
 
           $result      = '';

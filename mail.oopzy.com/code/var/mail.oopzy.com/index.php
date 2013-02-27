@@ -24,6 +24,13 @@ $GLOBALS['site_name']='oopzy spam fighter single use recycle email';
 $GLOBALS['jsdebug'] = true;
 $GLOBALS['namespace'] = 'oopzy';
 $GLOBALS['cache_param'] = time();
+
+$GLOBALS['allowed_hosts'] = array('oopzy.com');
+
+$GLOBALS['REDISHOST'] = 'localhost';
+$GLOBALS['REDISPORT'] = 6379;
+$GLOBALS['REDISDB'] = 0;
+
 //===============================================
 // Includes
 //===============================================
