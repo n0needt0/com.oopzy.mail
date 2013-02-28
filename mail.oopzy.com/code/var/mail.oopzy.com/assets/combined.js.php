@@ -28,6 +28,7 @@ $output .= file_get_contents('vendor/jquery/plugins/jquery.csv.min.r34.js')."\n"
 $output .= file_get_contents('vendor/jquery/plugins/jquery.dataTables.min.1.6.2.js');
 $output .= file_get_contents('vendor/jquery/plugins/jquery.autocomplete.js');
 $output .= file_get_contents('vendor/underscore.js');
+$output .= file_get_contents('vendor/oopzy.js');
 
 // we'll never have a release go longer than 90 days. never. ever ever. haha.
 $expires = 60 * 60 * 24 * 90;

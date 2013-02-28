@@ -29,6 +29,13 @@ function debug(msg){
        console.log(msg);
    }
 }
+
+var uvOptions = {};
+(function() {
+  var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+  uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/WRmCdhfqqyO0zvAZvjqA.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+})();
 </script>
 <script src="/assets/combined.js.php?r=<?php echo $oopzy['cache_param']; ?>"></script>
 <link rel="stylesheet" type="text/css" href="/assets/combined.css.php?r=<?php echo $oopzy['cache_param']; ?>" />
@@ -40,6 +47,20 @@ function debug(msg){
         background-color: #f5f5f5;
         font-size:14px;
       }
+
+      .hl-yellow{
+        background:yellow;
+      }
+
+      .hl-underline{
+       text-decoration: underline;
+      }
+
+
+      .normaltext{
+        font-size:16px;
+      }
+
 
       #title{
       float:right;
@@ -99,10 +120,18 @@ function debug(msg){
             padding-bottom: 10px;
             padding-top: 10px;
             text-align: center;
-            width: 1000px;
+            width: 100%;
             bottom:0;
             height:20px;   /* Height of the footer */
          }
+
+ .specialImage{
+  position:fixed;
+  bottom:0;
+  left:0;
+  z-index:100; /* or higher/lower depending on other elements */
+}
+
 </style>
 
 </head>
@@ -122,8 +151,9 @@ function debug(msg){
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
+              <li><a href="#spam-o-meter">Spam-o-Meter</a></li>
             </ul>
-            <a class='brand' id='title'> simply the best single use email service :)</a>
+            <a class='brand' id='title'> simply the best single use email & re-mail service :)</a>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -133,9 +163,8 @@ function debug(msg){
 
 <div class='container'>
       <div> <?php echo $content; ?> </div>
-  <div id="footer"> Copyright &copy; <?php echo date('Y') ; ?> oopzy.com All Rights Reserved | rSVN_REVISION  </div>
-
-</div>
-
+ </div>
+<div id="footer"> Copyright &copy; <?php echo date('Y') ; ?> oopzy.com All Rights Reserved | rSVN_REVISION  </div>
+<img src="/assets/images/oopzy.png" class="specialImage" />
 </body>
 </html>

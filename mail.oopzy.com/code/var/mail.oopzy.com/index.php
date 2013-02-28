@@ -23,7 +23,7 @@ define('WEB_FOLDER','/kissmvc/'); //with trailing slash pls
 $GLOBALS['site_name']='oopzy spam fighter single use recycle email';
 $GLOBALS['jsdebug'] = true;
 $GLOBALS['namespace'] = 'oopzy';
-$GLOBALS['cache_param'] = time();
+$GLOBALS['cache_param'] = 5;
 
 $GLOBALS['allowed_hosts'] = array('oopzy.com');
 $GLOBALS['host_name'] = 'oopzy.com';
