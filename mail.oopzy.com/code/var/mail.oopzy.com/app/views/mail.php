@@ -165,11 +165,10 @@ Oopzy.JST = Oopzy.JST || {};
 
         	if( box.length > 2)
         	{
-            	//set cookie
+        		//set cookie
             	createCookie('oopzybox', box, 365);
-
-        		$('#messages').html("");
         		$.getJSON('/get_messages/' + box , function(data) {
+        			 $('#messages').html("");
         			 $.each(data, function(key, val) {
         				 $('#messages').append(Oopzy.JST['tl/message'](val));
         			});
@@ -205,7 +204,9 @@ Oopzy.JST = Oopzy.JST || {};
          if( box.length > 2)
      	{
         	 $('#mailbox').val(box);
+        	 setTimeout(function(){
         	 $('#submit').trigger('click');
+        	 },3000);
      	}
           else
         {

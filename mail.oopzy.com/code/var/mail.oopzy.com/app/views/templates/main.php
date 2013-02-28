@@ -6,6 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="/assets/favicon.ico" />
 <title><?php echo $oopzy['site_name'];?></title>
+
+<script src="/assets/combined.js.php?r=<?php echo $oopzy['cache_param']; ?>"></script>
+
 <script>
 var Oopzy = Oopzy || {};
 
@@ -15,7 +18,6 @@ var Oopzy = Oopzy || {};
       echo " Oopzy.DEBUG_MODE = 'console'; ";
   }
 ?>
-
 
 function debug(msg){
 
@@ -36,8 +38,8 @@ var uvOptions = {};
   uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/WRmCdhfqqyO0zvAZvjqA.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
 })();
+
 </script>
-<script src="/assets/combined.js.php?r=<?php echo $oopzy['cache_param']; ?>"></script>
 <link rel="stylesheet" type="text/css" href="/assets/combined.css.php?r=<?php echo $oopzy['cache_param']; ?>" />
 
 <style type="text/css">
@@ -145,13 +147,12 @@ var uvOptions = {};
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Oopzy Mail</a>
+          <a class="brand" href="/">Oopzy Mail</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li><a href="#spam-o-meter">Spam-o-Meter</a></li>
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="about">About</a></li>
+              <li><a href="contact">Contact</a></li>
             </ul>
             <a class='brand' id='title'> simply the best single use email & re-mail service :)</a>
           </div><!--/.nav-collapse -->

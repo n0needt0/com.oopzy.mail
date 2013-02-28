@@ -14,14 +14,14 @@
 </style>
 <div class="jumbotron message">
 <h1>We fight spam for freedom</h1>
-</br>
+<p>&nbsp;</p>
 <p class="lead">
  Make up <span class='hl-underline'>ANY</span> <span class='hl-yellow'>address@oopzy.com</span> and start using it, no need to register anywhere.</br>
  We suggest your mail box contains <span class='hl-underline'>at least 6 characters</span> make it a secure one.</br>
  You can choose to save or forward your mails from any given address later...</br>
  <a class='hl-underline'>see how it works in details..</a>
 </p>
-
+<p>&nbsp;</p>
 <h2>Donate $1 today</h2>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick">
