@@ -1,7 +1,7 @@
 <?php
 set_time_limit(0);
 
-define('MESSAGE_MAX_SIZE', 1024);
+define('MESSAGE_MAX_SIZE', 10024);
 define('SERVICE_HOST_NAME', 'oopzy.com'); // This should also be set to reflect your RDNS
 define('TIMEOUT', 10); // how many seconds before timeout.
 define('REDIS_HOST', '127.0.0.1');

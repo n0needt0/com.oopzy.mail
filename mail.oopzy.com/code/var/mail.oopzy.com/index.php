@@ -26,8 +26,11 @@ $GLOBALS['namespace'] = 'oopzy';
 $GLOBALS['cache_param'] = time();
 
 $GLOBALS['allowed_hosts'] = array('oopzy.com');
+$GLOBALS['host_name'] = 'oopzy.com';
 
-$GLOBALS['REDISHOST'] = 'localhost';
+$GLOBALS['production'] = false;
+
+$GLOBALS['REDISHOST'] = '50.116.26.97';
 $GLOBALS['REDISPORT'] = 6379;
 $GLOBALS['REDISDB'] = 0;
 

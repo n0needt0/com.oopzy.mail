@@ -9,30 +9,17 @@ if ($cond && $_SERVER['REQUEST_METHOD'] == 'GET' && strtotime($cond) >= $last) {
 
 // TODO: consider caching the results of combo + minify
 
-include_once('css/cssmin-v2.0.2.2.php');
-
-$output  = "/********* reset.css *********/\n";
-$output .= file_get_contents('css/reset.css');
-$output .= "\n/********* main.css *********/\n";
-$output .= file_get_contents('css/main.css');
-$output .= "\n/********* notifications.css *********/\n";
-$output .= file_get_contents('css/notifications.css');
-$output .= "\n/********* formdialogue.css *********/\n";
-$output .= file_get_contents('css/formdialogue.css');
-$output .= "\n/********* breadcrumb.css *********/\n";
-$output .= file_get_contents('css/breadcrumb.css');
-$output .= "\n/********* rules.css *********/\n";
-$output .= file_get_contents('css/rules.css');
-$output .= "\n/********* headings.css *********/\n";
-$output .= file_get_contents('css/headings.css');
-$output .= "\n/********* home.css *********/\n";
-$output .= file_get_contents('css/home.css');
+include_once('cssmin-v2.0.2.2.php');
+$output = '';
 
 $output .= "\n/********* jquery.ui.css *********/\n";
 $output .= file_get_contents('vendor/jquery.ui/css/jquery.ui.css');
 
-$output .= "\n/********* jquery.datatables.css *********/\n";
-$output .= file_get_contents('vendor/jquery/css/jquery.datatables.css');
+$output .= "\n/********* bootstrap *********/\n";
+$output .= file_get_contents('vendor/bootstrap/css/bootstrap.css');
+
+$output .= "\n/********* bootstrap *********/\n";
+$output .= file_get_contents('vendor/bootstrap/css/bootstrap-responsive.css');
 
 $minify = (array_key_exists('r', $_REQUEST) && 'dev' != substr($_REQUEST['r'],0,3)); // ability to view source unpacked
 if ($minify && class_exists('CssMin'))

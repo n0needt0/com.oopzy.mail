@@ -1,8 +1,14 @@
 <?php
-function _index($box='Enter your mailbox')
+function _index($box='Enter Your Mail')
 {
   $box = urldecode($box);
+  $rememberme = '';
 
-  View::output_with_template('templates/main','index',array('box'=>$box));
+  if(isset($_COOKIE['rememberme']))
+  {
+      $rememberme = " checked='checked' ";
+  }
+
+  View::output_with_template('templates/main','mail',array('box'=>$box, 'rememberme'=>$rememberme));
 }
 

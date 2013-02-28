@@ -13,18 +13,32 @@
 
     try{
       $redis->connect($GLOBALS['REDISHOST'], $GLOBALS['REDISPORT']);
-      $res = $redis->get("$box");
+      //first get keys for this box
+      $keys = $redis->keys($box . '@' . $GLOBALS['host_name'] . ':*');
+
+      //then all messages
+      $res = $redis->mGet($keys);
 
       //process messages
       $result = array();
 
-      foreach($res as $key=>$value)
+      foreach($res as $key=>$email)
       {
-          if($mail = messageparser::parse(unserialize($value)))
-          {
-              $result[] = $mail;
-          }
+          $dt = array();
+          $emailParser = new PlancakeEmailParser(unserialize($email));
+          $dt['to'] = $emailParser->getTo();
+          $dt['key'] = $keys[$key];
+          $dt['from'] = $emailParser->getHeader('from');
+          $dt['dt'] = $emailParser->getHeader('Date');
+          $dt['subject'] = $emailParser->getSubject();
+
+          $emailDeliveredToHeader = $emailParser->getHeader('Delivered-To');
+
+          $dt['body'] = $emailParser->getPlainBody();
+          $result[] = $dt;
       }
+
+
 
       if(isset($_REQUEST['callback']))
       {
