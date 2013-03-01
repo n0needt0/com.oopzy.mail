@@ -91,6 +91,19 @@ namespace :deploy do
     run "cp #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/index.#{stage} #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/index.php"
   end
   
+  desc "get correct smtp2redis"
+   task :get_correct_smtp2redis do
+   
+       sudo "cp #{deploy_to}/current/mail.oopzy.com/code/srv/smtp2redis/smtp2redis.php.#{stage} #{deploy_to}/current/mail.oopzy.com/code/srv/smtp2redis/smtp2redis.php"
+       sudo "ln -sf #{deploy_to}/current/mail.oopzy.com/code/srv/smtp2redis /"
+    
+       sudo "cp #{deploy_to}/current/mail.oopzy.com/code/etc/init/smtp2redis.conf.#{stage} /etc/init/smtp2redis.conf"
+       sudo "stop smtp2redis"
+       sudo "start smtp2redis"
+   
+  end
+  
+  
   desc "get correct apache"
    task :get_correct_apache_conf do
    sudo "cp #{deploy_to}/current/mail.oopzy.com/code/etc/apache2/sites-enabled/#{application_name}.#{stage} /etc/apache2/sites-enabled/#{application_name}"
@@ -100,7 +113,7 @@ namespace :deploy do
   desc "Reload Apache"
   task :reload_apache do
     unless remote_file_exists?(apache_root)
-      sudo "ln -s /srv/#{application}/current/var/mail.oopzy.com/code/var/mail.oopzy.com #{apache_root}"
+      sudo "ln -sf #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com #{apache_root}"
     end
     
     sudo "/etc/init.d/apache2 reload"
@@ -126,6 +139,9 @@ after 'deploy', 'deploy:remove_old'
 
 #change permission to www-data user
 after 'deploy', 'deploy:chown_to_www_data'
+
+#get right smtp2redis service
+after 'deploy','deploy:get_correct_smtp2redis'
 
 #restart apache
 after 'deploy', 'deploy:reload_apache'

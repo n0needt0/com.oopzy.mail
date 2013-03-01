@@ -156,8 +156,6 @@ Oopzy.JST = Oopzy.JST || {};
 		  }, 3000);
 		})();
 
-	$('#messages').load('/home_message');
-
     $('#submit').click(function(){
 
     	try{
@@ -302,6 +300,7 @@ Oopzy.JST = Oopzy.JST || {};
     </div>
 </div>
 <div id='messages'>
+<?php include_once('home_message.php');?>
 </div>
 <div id='savepop'></div>
 <div id='tips'></div>
