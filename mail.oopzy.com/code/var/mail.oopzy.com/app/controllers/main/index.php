@@ -1,5 +1,5 @@
 <?php
-function _index($box='Enter Your Mail')
+function _index($box='')
 {
   $box = urldecode($box);
   $rememberme = '';

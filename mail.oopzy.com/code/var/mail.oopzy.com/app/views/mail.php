@@ -95,7 +95,8 @@ SPAN.good{
 		                         save_2:'Remember this email.',
 		                         save_3:'Forward all emails from:',
 		                         save_4:'to this email.',
-		                         whycare:'why care?'
+		                         whycare:'why care?',
+		                         initbox: 'Enter Your Mail'
 			                   };
 
 
@@ -156,6 +157,12 @@ Oopzy.JST = Oopzy.JST || {};
 		  }, 3000);
 		})();
 
+
+	if($('#mailbox').val() == "")
+	{
+		$('#mailbox').val(Oopzy.messages.initbox);
+	}
+
     $('#submit').click(function(){
 
     	try{
@@ -169,7 +176,10 @@ Oopzy.JST = Oopzy.JST || {};
 
         			 if(0 == data.length)
         			 {
-        				 $('#messages').prepend("<PRE class='message'><h2>No new messages...</h2></PRE>");
+            			 $('#nomessage').remove();
+            			 setTimeout(function(){
+            				 $('#messages').prepend("<PRE class='message' id='nomessage'><h2>No new messages...</h2></PRE>");
+            	        	 },1000);
             		 }
         			   else
         			 {
@@ -212,7 +222,7 @@ Oopzy.JST = Oopzy.JST || {};
         	 $('#mailbox').val(box);
         	 setTimeout(function(){
         	 $('#submit').trigger('click');
-        	 },3000);
+        	 },2000);
      	}
           else
         {
@@ -223,6 +233,12 @@ Oopzy.JST = Oopzy.JST || {};
 	{
         $('#submit').attr('disabled', 'disabled');
 	}
+
+	if($('#mailbox').val() != Oopzy.messages.initbox)
+    {
+		$('#submit').removeAttr('disabled');
+	}
+
 
     $('#savepop').append(Oopzy.JST['tl/save'](Oopzy.messages));
 
