@@ -91,18 +91,24 @@ namespace :deploy do
     run "cp #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/index.#{stage} #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/index.php"
   end
   
-  desc "get correct smtp2redis"
+ desc "get correct smtp2redis"
    task :get_correct_smtp2redis do
    
        sudo "cp #{deploy_to}/current/mail.oopzy.com/code/srv/smtp2redis/smtp2redis.php.#{stage} #{deploy_to}/current/mail.oopzy.com/code/srv/smtp2redis/smtp2redis.php"
-       sudo "ln -sf #{deploy_to}/current/mail.oopzy.com/code/srv/smtp2redis /"
+       sudo "ln -sf #{deploy_to}/current/mail.oopzy.com/code/srv/smtp2redis /srv"
     
        sudo "cp #{deploy_to}/current/mail.oopzy.com/code/etc/init/smtp2redis.conf.#{stage} /etc/init/smtp2redis.conf"
-       sudo "stop smtp2redis"
-       sudo "start smtp2redis"
-   
   end
   
+  desc "start correct smtp2redis"
+   task :start_correct_smtp2redis , :on_error => :continue do
+     sudo "start smtp2redis"
+   end
+  
+  desc "restart correct smtp2redis"
+   task :restart_correct_smtp2redis , :on_error => :continue do
+     sudo "restart smtp2redis"
+   end
   
   desc "get correct apache"
    task :get_correct_apache_conf do
@@ -141,6 +147,8 @@ after 'deploy', 'deploy:chown_to_www_data'
 
 #get right smtp2redis service
 after 'deploy','deploy:get_correct_smtp2redis'
+after 'deploy','deploy:start_correct_smtp2redis'
+after 'deploy','deploy:restart_correct_smtp2redis'
 
 #restart apache
 after 'deploy', 'deploy:reload_apache'

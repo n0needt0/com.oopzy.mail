@@ -171,6 +171,10 @@ Oopzy.JST = Oopzy.JST || {};
         			 {
         				 $('#messages').prepend("<PRE class='message'><h2>No new messages...</h2></PRE>");
             		 }
+        			   else
+        			 {
+        				   $('#messages').html("");
+        			 }
         			 $.each(data, function(key, val) {
         				 $('#messages').append(Oopzy.JST['tl/message'](val));
         			});
