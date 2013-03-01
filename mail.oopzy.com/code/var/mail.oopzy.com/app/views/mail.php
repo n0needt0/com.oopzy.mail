@@ -168,7 +168,11 @@ Oopzy.JST = Oopzy.JST || {};
         		//set cookie
             	createCookie('oopzybox', box, 365);
         		$.getJSON('/get_messages/' + box , function(data) {
-        			 $('#messages').html("");
+
+        			 if(0 == data.length)
+        			 {
+        				 $('#messages').prepend("<PRE class='message'><h2>No new messages...</h2></PRE>");
+            		 }
         			 $.each(data, function(key, val) {
         				 $('#messages').append(Oopzy.JST['tl/message'](val));
         			});

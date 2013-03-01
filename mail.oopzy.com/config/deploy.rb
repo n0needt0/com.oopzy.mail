@@ -5,27 +5,27 @@ set :use_sudo, true
 
 set :keep_releases, 2
 
-set :application, "someapp"
+set :application, "cpm.oopzy.com"
 
 set :user, Capistrano::CLI.ui.ask("User for deploy:")
 set :password, Capistrano::CLI.ui.ask("Password for user #{user}:"){|q|q.echo = false}
-set :ssh_options, {:user => user, :password => password }
-set :scm_command, "svn_umask"
-set :scm_username, "#{user}"
-set :scm_password, "#{password}"
-set :repository, "svn+ssh://#{user}@173.255.252.189/srv/svn/helppain/wordpress/code"
-set :checkout, "export"
+set :ssh_options, {:user => user, :password => password. :forward_agent => true }
+set :scm, "git"
+set :user, "#{user}"
+set :scm_passphrase, "#{password}"
+set :repository, "https://github.com/n0needt0/com.oopzy.mail/tree/master/mail.oopzy.com"
 
-set :scm_auth_cache, false
-set :scm, :subversion
-
+set :branch, "master"
 set :deploy_via, :remote_cache
+set :scm_auth_cache, false
+
+
 
 #don't copy .svn directories from the cache to production
-set :copy_exclude, [".svn" "conf"]
+#set :copy_exclude, [".svn" "conf"]
 
-set :stages, %w(oopsy-mail-production oopsy-mail-staging)
-set :default_stage, "none"
+set :stages, %w(production staging)
+set :default_stage, "staging"
 
 require 'capistrano/ext/multistage'
 
@@ -51,7 +51,6 @@ namespace :deploy do
   desc "Send email notification of deployment (only send variables you want to be in the email)"
   task :notify, :roles => :app do
     show.me
-    CapRailslessMailer.notification_email(self).deliver
   end
   
   def remote_file_exists?(full_path)
@@ -134,13 +133,13 @@ end
 before 'deploy', 'setup:me'
 
 #change directory permissions to current user
-before 'deploy', 'deploy:chown_to_user'
+#before 'deploy', 'deploy:chown_to_user'
 
 #get correct config version
 #after 'deploy','deploy:get_correct_config'
 
 #get correct deploy apache conf version
-after 'deploy','deploy:get_correct_apache_conf'
+#after 'deploy','deploy:get_correct_apache_conf'
 
 #change permission to www-data user
 #after 'deploy', 'deploy:publish_revision'
@@ -152,16 +151,16 @@ after 'deploy','deploy:get_correct_apache_conf'
 #after 'deploy', 'deploy:set_crontab'
 
 #remove old code
-after 'deploy', 'deploy:remove_old'
+#after 'deploy', 'deploy:remove_old'
 
 #change permission to www-data user
-after 'deploy', 'deploy:chown_to_www_data'
+#after 'deploy', 'deploy:chown_to_www_data'
 
 #restart apache
-after 'deploy', 'deploy:reload_apache'
+#after 'deploy', 'deploy:reload_apache'
 
 #nothing here for now
-after 'deploy:update_code' do
+#after 'deploy:update_code' do
   #Links used to be made here, now they're setup in chef, and the dashboard code base includes them out of /etc/dashboard.
 
   #link up dashboard database configs

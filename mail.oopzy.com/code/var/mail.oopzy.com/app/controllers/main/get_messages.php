@@ -22,23 +22,24 @@
       //process messages
       $result = array();
 
-      foreach($res as $key=>$email)
+      if($res)
       {
-          $dt = array();
-          $emailParser = new PlancakeEmailParser(unserialize($email));
-          $dt['to'] = $emailParser->getTo();
-          $dt['key'] = $keys[$key];
-          $dt['from'] = $emailParser->getHeader('from');
-          $dt['dt'] = $emailParser->getHeader('Date');
-          $dt['subject'] = $emailParser->getSubject();
+          foreach($res as $key=>$email)
+          {
+              $dt = array();
+              $emailParser = new PlancakeEmailParser(unserialize($email));
+              $dt['to'] = $emailParser->getTo();
+              $dt['key'] = $keys[$key];
+              $dt['from'] = $emailParser->getHeader('from');
+              $dt['dt'] = $emailParser->getHeader('Date');
+              $dt['subject'] = $emailParser->getSubject();
 
-          $emailDeliveredToHeader = $emailParser->getHeader('Delivered-To');
+              $emailDeliveredToHeader = $emailParser->getHeader('Delivered-To');
 
-          $dt['body'] = $emailParser->getPlainBody();
-          $result[] = $dt;
+              $dt['body'] = $emailParser->getPlainBody();
+              $result[] = $dt;
+          }
       }
-
-
 
       if(isset($_REQUEST['callback']))
       {
