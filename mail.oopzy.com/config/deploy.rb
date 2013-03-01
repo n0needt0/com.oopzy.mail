@@ -107,7 +107,6 @@ namespace :deploy do
   desc "get correct apache"
    task :get_correct_apache_conf do
    sudo "cp #{deploy_to}/current/mail.oopzy.com/code/etc/apache2/sites-enabled/#{application_name}.#{stage} /etc/apache2/sites-enabled/#{application_name}"
-   sudo "rm -rf #{deploy_to}/current/mail.oopzy.com/code/etc"
   end
 
   desc "Reload Apache"

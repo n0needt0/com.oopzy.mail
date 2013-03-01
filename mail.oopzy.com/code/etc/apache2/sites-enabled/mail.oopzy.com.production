@@ -1,5 +1,5 @@
 <VirtualHost  *:80>
-  ServerName mail.oopzy.com
+  ServerName www.oopzy.com
   
   RewriteLog "/var/log/rewrite.log"
   RewriteLogLevel 0
