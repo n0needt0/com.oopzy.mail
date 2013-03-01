@@ -6,10 +6,11 @@ Other day i got tired of giving up my email out, just to receive more spam.
 Sure you say, get a single use email or free google box for junk mail.
 I completely agree there are plenty "All ON" or "All OFF" solutions. However,
 
-<h3> I want </h3>
-To give my "public" email out and receive it to my "private" email .
-<h3> Yet </h3>
-If my email get sold later on, spam will stop at my public email once for all..
+<h3> I need </h3>
+Give my "public" email out and receive massages sent to it in my "private" email .
+
+<h3> However </h3>
+<strike>If</strike> When my email gets sold later on, spam will stop at my "public" email ..
 
 <h3>Team</h3>
 
@@ -19,8 +20,7 @@ If my email get sold later on, spam will stop at my public email once for all..
 PHP 5, Redis, Resque Mysql, Jquery, ._underscore, Bootstraped, Apache. Hosting on Linode
 
 <h3>Open Source Contribution</h3>
- Smptp2redis gateway , running on PHP5 eventlib
-<a href='https://github.com/n0needt0/smtp2redis' >get it on github </a>..
+ Smptp2redis gateway , running on PHP5 eventlib <a href='https://github.com/n0needt0/smtp2redis' >get it on github </a>..
 
  Cheers
       -Andrew
