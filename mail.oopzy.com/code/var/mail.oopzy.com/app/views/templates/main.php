@@ -68,7 +68,6 @@ var uvOptions = {};
       float:right;
       }
 
-
       /* Mini layout previews
         -------------------------------------------------- */
         .mini-layout {
