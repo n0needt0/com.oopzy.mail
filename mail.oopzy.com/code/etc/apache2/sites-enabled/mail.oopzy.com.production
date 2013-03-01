@@ -2,14 +2,14 @@
   ServerName mail.oopzy.com
   
   RewriteLog "/var/log/rewrite.log"
-  RewriteLogLevel 9
+  RewriteLogLevel 0
   
   ServerAdmin webmaster@this.com
   AllowEncodedSlashes On
   DirectoryIndex index.php index.html
-  DocumentRoot /var/www/mail.oopzy.com
-  Alias /assets/  /var/www/mail.oopzy.com/assets/
-  <Directory "/var/www/mail.oopzy.com">
+  DocumentRoot /var/www/mail.oopzy.com.production
+  Alias /assets/  /var/www/mail.oopzy.com.production/assets/
+  <Directory "/var/www/mail.oopzy.com.production">
       Options All
       Options -Indexes
       AllowOverride All

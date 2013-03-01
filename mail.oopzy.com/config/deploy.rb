@@ -33,7 +33,7 @@ require 'capistrano/ext/multistage'
 namespace :setup do
   desc "Set env"
   task :me do
-    set :application, "#{stage}"
+    set :application, "#{application_name}.#{stage}"
     set :deploy_to, "/srv/#{application}"
     set :apache_root, "/var/www/#{application}"
   end
@@ -78,7 +78,7 @@ namespace :deploy do
 
   desc "Write current revision to "
   task :publish_revision do
-  run "content=`cat #{deploy_to}/current/REVISION`;ip=`ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`; sed -i \"s/SVN_REVISION/$content-$ip/g\" #{deploy_to}/staging/current/mail.oopzy.com/code/var/mail.oopzy.com/app/views/templates/main.php"
+  run "content=`cat #{deploy_to}/current/REVISION`;ip=`ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`; sed -i \"s/MY_REVISION/$content-$ip/g\" #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/app/views/templates/main.php"
   end
   
   desc "clean up old releases"
@@ -93,18 +93,14 @@ namespace :deploy do
   
   desc "get correct apache"
    task :get_correct_apache_conf do
-   sudo "cp #{deploy_to}/current/etc/apache2/sites-enabled/#{application_name}.#{stage} /etc/apache2/sites-enabled/#{application_name}"
-     unless remote_file_exists?("/etc/apache2/sslcerts")
-          sudo "mkdir -p /etc/apache2/sslcerts"
-     end
-     sudo "cp #{deploy_to}/current/etc/apache2/sslcerts/* /etc/apache2/sslcerts/"
-   sudo "rm -rf #{deploy_to}/current/etc"
+   sudo "cp #{deploy_to}/current/mail.oopzy.com/code/etc/apache2/sites-enabled/#{application_name}.#{stage} /etc/apache2/sites-enabled/#{application_name}"
+   sudo "rm -rf #{deploy_to}/current/mail.oopzy.com/code/etc"
   end
 
   desc "Reload Apache"
   task :reload_apache do
     unless remote_file_exists?(apache_root)
-      sudo "ln -s /srv/#{application}/current/var/www/#{application} #{apache_root}"
+      sudo "ln -s /srv/#{application}/current/var/mail.oopzy.com/code/var/mail.oopzy.com #{apache_root}"
     end
     
     sudo "/etc/init.d/apache2 reload"
