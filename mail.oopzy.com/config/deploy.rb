@@ -9,12 +9,13 @@ set :application, "cpm.oopzy.com"
 
 set :user, Capistrano::CLI.ui.ask("User for deploy:")
 set :password, Capistrano::CLI.ui.ask("Password for user #{user}:"){|q|q.echo = false}
-set :ssh_options, {:user => user, :password => password. :forward_agent => true }
+set :ssh_options, {:user => user, :password => password, :forward_agent => true }
 set :scm, "git"
 set :user, "#{user}"
 set :scm_passphrase, "#{password}"
-set :repository, "https://github.com/n0needt0/com.oopzy.mail/tree/master/mail.oopzy.com"
+set :repository, "https://github.com/n0needt0/com.oopzy.mail"
 
+#set :scm_command, "git_umask"
 set :branch, "master"
 set :deploy_via, :remote_cache
 set :scm_auth_cache, false
@@ -77,7 +78,7 @@ namespace :deploy do
 
   desc "Write current revision to "
   task :publish_revision do
-  run "content=`cat #{deploy_to}/current/REVISION`;ip=`ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`; sed -i \"s/SVN_REVISION/$content-$ip/g\" #{deploy_to}/current/var/www/sugar/themes/Sugar5/tpls/footer.tpl"
+  run "content=`cat #{deploy_to}/current/REVISION`;ip=`ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`; sed -i \"s/SVN_REVISION/$content-$ip/g\" #{deploy_to}/staging/current/mail.oopzy.com/code/var/mail.oopzy.com/app/views/templates/main.php"
   end
   
   desc "write backup job"
@@ -133,16 +134,16 @@ end
 before 'deploy', 'setup:me'
 
 #change directory permissions to current user
-#before 'deploy', 'deploy:chown_to_user'
+before 'deploy', 'deploy:chown_to_user'
 
 #get correct config version
-#after 'deploy','deploy:get_correct_config'
+after 'deploy','deploy:get_correct_config'
 
 #get correct deploy apache conf version
 #after 'deploy','deploy:get_correct_apache_conf'
 
 #change permission to www-data user
-#after 'deploy', 'deploy:publish_revision'
+after 'deploy', 'deploy:publish_revision'
 
 #make backup job script
 #after 'deploy', 'deploy:make_backup_job'
@@ -167,4 +168,4 @@ before 'deploy', 'setup:me'
   #run "ln -sf #{deploy_to}/#{shared_dir}/config/database.php #{current_release}/web_apps/ptrac/config/database.php"
   #link up redis database configs
   #run "ln -sf #{deploy_to}/#{shared_dir}/config/redis.php #{current_release}/web_apps/ptrac/config/redis.php"
-end
+#end

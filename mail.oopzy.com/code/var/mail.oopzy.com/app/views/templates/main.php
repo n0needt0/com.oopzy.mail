@@ -165,7 +165,7 @@ var uvOptions = {};
 <div class='container'>
       <div> <?php echo $content; ?> </div>
  </div>
-<div id="footer"> Copyright &copy; <?php echo date('Y') ; ?> oopzy.com All Rights Reserved | rSVN_REVISION  </div>
+<div id="footer"> Copyright &copy; <?php echo date('Y') ; ?> oopzy.com All Rights Reserved | rMY_REVISION  </div>
 <img src="/assets/images/oopzy.png" class="specialImage" />
 </body>
 </html>
