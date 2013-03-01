@@ -113,8 +113,7 @@ var uvOptions = {};
           margin-left: 2.5%;
         }
 
-        #footer {
-            position:absolute;
+        #btmfooter {
             color: #AAAAAA;
             font-size: 11px;
             margin-left: auto;
@@ -123,7 +122,6 @@ var uvOptions = {};
             padding-top: 10px;
             text-align: center;
             width: 100%;
-            bottom:0;
             height:20px;   /* Height of the footer */
          }
 
@@ -165,7 +163,8 @@ var uvOptions = {};
 <div class='container'>
       <div> <?php echo $content; ?> </div>
  </div>
-<div id="footer"> Copyright &copy; <?php echo date('Y') ; ?> oopzy.com All Rights Reserved | rMY_REVISION  </div>
 <img src="/assets/images/oopzy.png" class="specialImage" />
+<div id="btmfooter"> Copyright &copy; <?php echo date('Y') ; ?> oopzy.com All Rights Reserved | rMY_REVISION  </div>
+
 </body>
 </html>
