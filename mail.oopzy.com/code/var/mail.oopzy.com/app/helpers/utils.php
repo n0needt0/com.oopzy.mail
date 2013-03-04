@@ -1,7 +1,6 @@
 <?php
-Class utils
+Class Utils
 {
-
   public function json_indent($json) {
 
           $result      = '';
@@ -95,8 +94,12 @@ Class utils
           {
               $quality += 1;
           }
-
           return $quality;
+      }
 
+      public function error_echo_die($error)
+      {
+           echo json_encode(array('error'=>$error));
+           die;
       }
 }

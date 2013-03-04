@@ -27,6 +27,7 @@
           foreach($res as $key=>$email)
           {
               $dt = array();
+              include_once(APP_PATH . 'vendors/PlancakeEmailParser/PlancakeEmailParser.php');
               $emailParser = new PlancakeEmailParser(unserialize($email));
               $dt['to'] = $emailParser->getTo();
               $dt['key'] = $keys[$key];
