@@ -14,7 +14,7 @@
 </style>
 <div class="jumbotron message">
 <h1>We fight spam for freedom</h1>
-<p>&nbsp;</p>
+<p><img src='/assets/images/oopzybig.png'/></p>
 <p class="lead">
  Make up <span class='hl-underline'>ANY</span> <span class='hl-yellow'>address@oopzy.com</span> and start using it, no need to register anywhere.</br>
  We suggest your mail box contains <span class='hl-underline'>at least 6 characters</span> make it a secure one.</br>

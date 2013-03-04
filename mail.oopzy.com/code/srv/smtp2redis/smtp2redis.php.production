@@ -6,7 +6,10 @@ define('SERVICE_HOST_NAME', 'oopzy.com'); // This should also be set to reflect 
 define('TIMEOUT', 10); // how many seconds before timeout.
 define('REDIS_HOST', '127.0.0.1');
 define('REDIS_PORT', 6379);
-define('REDIS_TTL', 60 * 60); // 1 hour
+define('REDIS_TTL_GOOD', 60 * 60); // 1 hour
+define('REDIS_TTL_BAD', 60 * 5); // 5 minutes
+define('REDIS_TTL_OK', 60 * 20); // 20 minutes
+
 define('SERVICE_USER', 'oopzyd');
 define('PRIMARY_MAIL_HOST', 'oopzy.com'); // The primary domain name of you email.
 define('ALLOWED_HOSTS','oopzy.com');// Allowed hosts, a comma delimited  list.
@@ -433,7 +436,22 @@ Class Smtp2redis
     $sdata = serialize($email);
     $key = $to ;
 
-    $res = $this->to_redis($to,$sdata, REDIS_TTL);
+    $box_quality = $this->boxquality($to);
+
+    if($box_quality < 2)
+    {
+        $ttl = REDIS_TTL_BAD;
+    }
+    elseif($box_quality > 4)
+    {
+        $ttl = REDIS_TTL_GOOD;
+    }
+    else
+    {
+        $ttl = REDIS_TTL_OK;
+    }
+
+    $res = $this->to_redis($to,$sdata, $ttl);
 
     if(!$res)
     {
@@ -441,6 +459,53 @@ Class Smtp2redis
     }
 
     return array($res, $to);
+  }
+
+  public function boxquality($box)
+  {
+      $quality = 0;
+      //if the password length is less than 6, return message.
+      if (strlen($box) < 6)
+      {
+          return $quality;
+      }
+
+      if(!filter_var($box . '@oopzy.com', FILTER_VALIDATE_EMAIL))
+      {
+          return 0;
+      }
+
+      if (strlen($box) > 6)
+      {
+          $quality += 1;
+      }
+
+      //if password contains both lower and uppercase characters, increase strength str
+      if (preg_match('/([a-z].*[A-Z])|([A-Z].*[a-z])/',$box))
+      {
+          $quality += 1;
+      }
+
+      //if it has numbers and characters, increase strength str
+      if (preg_match('/([a-zA-Z])/',$box) && preg_match('/([0-9])/',$box))
+      {
+          $quality += 1;
+      }
+
+      //if it has one special character, increase strength str
+      if (preg_match('/([!,%,&,#,$,^,*,?,_,~])/',$box))
+      {
+          $quality += 1;
+      }
+
+      //if it has two special characters, increase strength str
+      if (preg_match('/(.*[!,%,&,#,$,^,*,?,_,~].*[!,%,&,#,$,^,*,?,_,~])/',$box))
+      {
+          $quality += 1;
+      }
+
+      return $quality;
+
   }
 
   function to_redis($to, $data, $ttl)

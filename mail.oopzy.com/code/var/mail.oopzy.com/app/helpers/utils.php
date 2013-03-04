@@ -52,4 +52,51 @@ Class utils
 
           return $result;
       }
+
+      public function quality($box)
+      {
+          $quality = 0;
+          //if the password length is less than 6, return message.
+          if (strlen($box) < 6)
+          {
+              return $quality;
+          }
+
+          if(!filter_var($box . '@oopzy.com', FILTER_VALIDATE_EMAIL))
+          {
+             return 0;
+          }
+
+          if (strlen($box) > 6)
+          {
+              $quality += 1;
+          }
+
+          //if password contains both lower and uppercase characters, increase strength str
+          if (preg_match('/([a-z].*[A-Z])|([A-Z].*[a-z])/',$box))
+          {
+              $quality += 1;
+          }
+
+          //if it has numbers and characters, increase strength str
+          if (preg_match('/([a-zA-Z])/',$box) && preg_match('/([0-9])/',$box))
+          {
+              $quality += 1;
+          }
+
+          //if it has one special character, increase strength str
+          if (preg_match('/([!,%,&,#,$,^,*,?,_,~])/',$box))
+          {
+              $quality += 1;
+          }
+
+          //if it has two special characters, increase strength str
+          if (preg_match('/(.*[!,%,&,#,$,^,*,?,_,~].*[!,%,&,#,$,^,*,?,_,~])/',$box))
+          {
+              $quality += 1;
+          }
+
+          return $quality;
+
+      }
 }
