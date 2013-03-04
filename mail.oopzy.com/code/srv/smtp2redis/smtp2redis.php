@@ -1,7 +1,7 @@
 <?php
-set_time_limit(0);
+include_once(dirname(__FILE__) .'/config.php');
 
-require_once(dirname(__FILE__) .'/config.php');
+set_time_limit(0);
 
 $smtp2redis = new Smtp2redis();
 $smtp2redis->run();
