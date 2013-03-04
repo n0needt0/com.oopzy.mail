@@ -59,7 +59,6 @@
                 ->addPart($message_html, 'text/html')
                 ;
 
-
               $res_mail = $mailer->send($msg);
 
              if($res_redis && $res_mail)
@@ -69,7 +68,7 @@
          }
          catch(Exception $e)
          {
-             utils::error_echo_die($e->getMessage());
+             utils::error_echo_die('Exception ' . $e->getMessage());
          }
 
     }
