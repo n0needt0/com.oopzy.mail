@@ -442,7 +442,6 @@ Class Smtp2redis
 
     $debug = array('bq'=>$boxquality);
 
-
     $sdata = serialize(array('email'=>$email, 'debug'=>$debug));
 
     $res = $this->to_redis($to,$sdata, $ttl);
