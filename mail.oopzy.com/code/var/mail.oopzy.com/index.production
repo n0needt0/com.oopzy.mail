@@ -2,7 +2,7 @@
 //===============================================
 // Debug
 //===============================================
-ini_set('display_errors','Off');
+ini_set('display_errors','On');
 error_reporting(E_ALL);
 
 //===============================================
@@ -21,18 +21,29 @@ define('WEB_FOLDER','/kissmvc/'); //with trailing slash pls
 // Other Settings
 //===============================================
 $GLOBALS['site_name']='oopzy spam fighter single use recycle email';
-$GLOBALS['jsdebug'] = false;
+$GLOBALS['jsdebug'] = true;
 $GLOBALS['namespace'] = 'oopzy';
 $GLOBALS['cache_param'] = 5;
 
 $GLOBALS['allowed_hosts'] = array('oopzy.com');
 $GLOBALS['host_name'] = 'oopzy.com';
 
+$GLOBALS['www_host_name'] = 'www.oopzy.com';
+
 $GLOBALS['production'] = false;
 
 $GLOBALS['REDISHOST'] = 'localhost';
 $GLOBALS['REDISPORT'] = 6379;
 $GLOBALS['REDISDB'] = 0;
+
+//make it self settable based on language used
+$GLOBALS['MESSAGES'] = array(
+                                                    'MSG_VERIFY_BODY'=>"Please verify this email (%s) \n by clicking on this link ( %s ), \n if you can not click it cut and paste it into your browser",
+                                                    'MSG_VERIFY_BODY_HTML'=>"Please verify this email (%s) \n by clicking on this link ( <a href='%s'>%s</a> ), \n if you can not click it cut and paste it into your browser",
+                                                    'MSG_VERIFY_SUBJECT'=>'Verification request from Oopzy.com',
+                                                    'MSG_VERIFY_NOSELF'=> 'You can not use to forward ' . $GLOBALS['host_name'] . ' mails emails ',
+                                                    'MSG_VERIFY_INVALID'=> 'Invalid Email ',
+                                                );
 
 //===============================================
 // Includes
@@ -86,12 +97,14 @@ function getdbh() {
 // Assumes Model Classes start with capital letters and Helpers start with lower case letters
 
 function __autoload($classname) {
-  $a=$classname[0];
-  if ($a >= 'A' && $a <='Z')
-    require_once(APP_PATH.'models/'.$classname.'.php');
-  else
-    require_once(APP_PATH.'helpers/'.$classname.'.php');
+    $a=$classname[0];
+    if ($a >= 'A' && $a <='Z')
+    {
+        require_once(APP_PATH.'models/'.$classname.'.php');
+    }
 }
+
+require_once(APP_PATH.'helpers/utils.php');
 
 //===============================================
 // Start the controller
