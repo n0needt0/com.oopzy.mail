@@ -94,7 +94,7 @@ namespace :deploy do
  desc "get correct smtp2redis"
    task :get_correct_smtp2redis do
    
-       sudo "cp #{deploy_to}/current/mail.oopzy.com/code/srv/smtp2redis/smtp2redis.php.#{stage} #{deploy_to}/current/mail.oopzy.com/code/srv/smtp2redis/smtp2redis.php"
+       sudo "cp #{deploy_to}/current/mail.oopzy.com/code/srv/smtp2redis/config.php.#{stage} #{deploy_to}/current/mail.oopzy.com/code/srv/smtp2redis/config.php"
        sudo "ln -sf #{deploy_to}/current/mail.oopzy.com/code/srv/smtp2redis /srv"
     
        sudo "cp #{deploy_to}/current/mail.oopzy.com/code/etc/init/smtp2redis.conf.#{stage} /etc/init/smtp2redis.conf"
