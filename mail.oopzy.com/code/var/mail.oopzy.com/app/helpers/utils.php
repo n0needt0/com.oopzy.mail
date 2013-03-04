@@ -52,7 +52,7 @@ Class utils
           return $result;
       }
 
-      public function quality($box)
+      public function box_quality($box)
       {
           $quality = 0;
           //if the password length is less than 6, return message.

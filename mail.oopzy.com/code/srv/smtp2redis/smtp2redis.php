@@ -1,18 +1,7 @@
 <?php
 set_time_limit(0);
 
-define('MESSAGE_MAX_SIZE', 10024);
-define('SERVICE_HOST_NAME', 'oopzy.com'); // This should also be set to reflect your RDNS
-define('TIMEOUT', 10); // how many seconds before timeout.
-define('REDIS_HOST', '127.0.0.1');
-define('REDIS_PORT', 6379);
-define('REDIS_TTL_GOOD', 60 * 60); // 1 hour
-define('REDIS_TTL_BAD', 60 * 5); // 5 minutes
-define('REDIS_TTL_OK', 60 * 20); // 20 minutes
-
-define('SERVICE_USER', 'oopzyd');
-define('PRIMARY_MAIL_HOST', 'oopzy.com'); // The primary domain name of you email.
-define('ALLOWED_HOSTS','oopzy.com');// Allowed hosts, a comma delimited  list.
+require_once(dirname(__FILE__) .'/config.php');
 
 $smtp2redis = new Smtp2redis();
 $smtp2redis->run();
@@ -433,7 +422,7 @@ Class Smtp2redis
 
     $to = $mail_user . '@' . PRIMARY_MAIL_HOST; // change it to the primary host
 
-    $sdata = serialize($email);
+
     $key = $to ;
 
     $box_quality = $this->boxquality($to);
@@ -450,6 +439,11 @@ Class Smtp2redis
     {
         $ttl = REDIS_TTL_OK;
     }
+
+    $debug = array('bq'=>$boxquality);
+
+
+    $sdata = serialize(array('email'=>$email, 'debug'=>$debug));
 
     $res = $this->to_redis($to,$sdata, $ttl);
 

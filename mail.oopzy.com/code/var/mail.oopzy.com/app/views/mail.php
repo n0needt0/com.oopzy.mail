@@ -109,7 +109,7 @@ Oopzy.JST = Oopzy.JST || {};
 	Oopzy.JST['tl/message'] = _.template(
 			  "<div class='message'>"+
 			  "<PRE>"+
-			  "<a class='saveme' ref='<%= key%>' from='<%= from%>' href='#'>save</a>"+
+			  "<a class='saveme' ref='<%= key%>' from='<%= from%>' href='#'>save</a> expire in <%= expirein%>"+
 			  "<b>from:</b> <a href='mailto:<%= from%>'><i><%= from%> </i></a> <%= dt%></br><b>Subject:</b><%= subject%>"+
 
 			  "<%= body%>"+

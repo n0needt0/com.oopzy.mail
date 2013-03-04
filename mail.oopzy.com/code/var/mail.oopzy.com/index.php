@@ -28,7 +28,9 @@ $GLOBALS['cache_param'] = 5;
 $GLOBALS['allowed_hosts'] = array('oopzy.com');
 $GLOBALS['host_name'] = 'oopzy.com';
 
-$GLOBALS['www_host_name'] = 'www.oopzy.com';
+$GLOBALS['PRIVATE_KEY'] = '#27drue';
+
+$GLOBALS['www_host_name'] = 'mail.oopzy.com';
 
 $GLOBALS['production'] = false;
 
@@ -43,6 +45,9 @@ $GLOBALS['MESSAGES'] = array(
                                                     'MSG_VERIFY_SUBJECT'=>'Verification request from Oopzy.com',
                                                     'MSG_VERIFY_NOSELF'=> 'You can not use to forward ' . $GLOBALS['host_name'] . ' mails emails ',
                                                     'MSG_VERIFY_INVALID'=> 'Invalid Email ',
+                                                    'MSG_VERIFY_TOKEN'=> 'Invalid Token ',
+                                                    'MSG_VERIFY_INVALID_BOX'=> 'Invalid Box ',
+                                                    'MSG_VERIFY_LOW_BOX_QUALITY'=> 'Low Box Quality '
                                                 );
 
 //===============================================

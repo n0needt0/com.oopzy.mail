@@ -24,21 +24,32 @@
 
       if($res)
       {
-          foreach($res as $key=>$email)
+          foreach($res as $key=>$data)
           {
-              $dt = array();
-              include_once(APP_PATH . 'vendors/PlancakeEmailParser/PlancakeEmailParser.php');
-              $emailParser = new PlancakeEmailParser(unserialize($email));
-              $dt['to'] = $emailParser->getTo();
-              $dt['key'] = $keys[$key];
-              $dt['from'] = $emailParser->getHeader('from');
-              $dt['dt'] = $emailParser->getHeader('Date');
-              $dt['subject'] = $emailParser->getSubject();
+              $data = unserialize($data);
 
-              $emailDeliveredToHeader = $emailParser->getHeader('Delivered-To');
+              if(isset($data['email']))
+              {
+                  $email = $data['email'];
 
-              $dt['body'] = $emailParser->getPlainBody();
-              $result[] = $dt;
+                  $dt = array();
+                  include_once(APP_PATH . 'vendors/PlancakeEmailParser/PlancakeEmailParser.php');
+                  $emailParser = new PlancakeEmailParser($email);
+                  $dt['to'] = $emailParser->getTo();
+                  $dt['key'] = $keys[$key];
+                  $dt['from'] = $emailParser->getHeader('from');
+                  $dt['dt'] = $emailParser->getHeader('Date');
+                  $dt['subject'] = $emailParser->getSubject();
+                  $ttl = $redis->ttl($keys[$key]);
+
+                  $dt['debug'] = $data['debug'];
+
+                  $dt['expirein'] = date('i:s' ,$ttl );
+                  $emailDeliveredToHeader = $emailParser->getHeader('Delivered-To');
+
+                  $dt['body'] = $emailParser->getPlainBody();
+                  $result[] = $dt;
+              }
           }
       }
 
