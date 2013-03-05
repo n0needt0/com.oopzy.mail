@@ -58,22 +58,25 @@ Class Smtp2redis
 
     private function event_error($buffer, $error, $id)
     {
-        $error = array();
+        $errors = array();
+
         foreach ($this->event_errors as $error_type => $error_code)
         {
             if ($error  & $error_code)
             {
-                array_push($error, $error_type);
+                array_push($errors, $error_type);
             }
         }
 
-        $err =  'error event #'. join(' | ', $error)."\n";
-
-        $this->log_line("ERROR: $err" , 1);
-        event_buffer_disable($this->clients[$id]['ev_buffer'], EV_READ | EV_WRITE);
-        event_buffer_free($this->clients[$id]['ev_buffer']);
-        fclose($this->clients[$id]['socket']);
-        unset($this->clients[$id]);
+        if(count($errors))
+        {
+            $err =  'error event #'. join(' | ', $errors)."\n";
+            $this->log_line("ERROR: $err" , 1);
+            event_buffer_disable($this->clients[$id]['ev_buffer'], EV_READ | EV_WRITE);
+            event_buffer_free($this->clients[$id]['ev_buffer']);
+            fclose($this->clients[$id]['socket']);
+            unset($this->clients[$id]);
+        }
     }
 
     private function event_write($buffer, $id)
