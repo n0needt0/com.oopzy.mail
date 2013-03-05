@@ -430,7 +430,7 @@ Class Smtp2redis
 
     $key = $to ;
 
-    $box_quality = $this->boxquality($to);
+    $box_quality = $this->boxquality($mail_user);
 
     if($box_quality < 2)
     {
@@ -480,7 +480,7 @@ Class Smtp2redis
 
       if(!filter_var($box . '@oopzy.com', FILTER_VALIDATE_EMAIL))
       {
-          return 0;
+          return -1;
       }
 
       if (strlen($box) > 6)
