@@ -410,6 +410,8 @@ Class Smtp2redis
       return array(false, false);
     }
 
+    $this->log_line("rcp_to $rcpt_to", 1);
+
     list($mail_user, $mail_host) = explode('@', $rcpt_to);
 
     if (!in_array($mail_host, $this->ALLOWED_HOSTS))
