@@ -440,7 +440,7 @@ Class Smtp2redis
         $ttl = REDIS_TTL_OK;
     }
 
-    $debug = array('bq'=>$boxquality);
+    $debug = array('bq'=>$box_quality);
 
     $sdata = serialize(array('email'=>$email, 'debug'=>$debug));
 
