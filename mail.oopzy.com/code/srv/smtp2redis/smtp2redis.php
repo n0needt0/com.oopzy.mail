@@ -478,14 +478,6 @@ Class Smtp2redis
           return $quality;
       }
 
-      $boxmail = $box . '@oopzy.com';
-
-      if(!filter_var($box . '@oopzy.com', FILTER_VALIDATE_EMAIL))
-      {
-          $this->log_line("invalid email $boxmail", 1);
-          return -1;
-      }
-
       if (strlen($box) > 6)
       {
           $quality += 1;
