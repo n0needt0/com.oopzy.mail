@@ -13,6 +13,6 @@
  Messages kept for 1 hr or automatically forwarded., up to 1mb size, attachments allowed.
 
  <h3>All others</h3>
- Messages up to 140 characters kept for 1 minute.
+ Messages up to 140 characters kept for 5 minutes.
 
 </PRE>

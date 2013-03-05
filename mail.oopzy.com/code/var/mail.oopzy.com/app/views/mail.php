@@ -109,7 +109,7 @@ Oopzy.JST = Oopzy.JST || {};
 	Oopzy.JST['tl/message'] = _.template(
 			  "<div class='message'>"+
 			  "<PRE>"+
-			  "<a class='saveme' ref='<%= key%>' from='<%= from%>' href='#'>save</a> expire in <%= expirein%>"+
+			  "<a class='saveme' ref='<%= key%>' from='<%= from%>' href='#'>save</a>"+
 			  "<b>from:</b> <a href='mailto:<%= from%>'><i><%= from%> </i></a> <%= dt%></br><b>Subject:</b><%= subject%>"+
 
 			  "<%= body%>"+
@@ -187,6 +187,7 @@ Oopzy.JST = Oopzy.JST || {};
         			 }
         			 $.each(data, function(key, val) {
         				 $('#messages').append(Oopzy.JST['tl/message'](val));
+        				 debug(val.debug);
         			});
         		});
 
@@ -200,8 +201,8 @@ Oopzy.JST = Oopzy.JST || {};
     });
 
     $('#mailbox').click(function(){
-        $('#mailbox').val("");
-        $('#submit').removeAttr('disabled');
+          $('#mailbox').val("");
+          $('#submit').removeAttr('disabled');
         });
 
 

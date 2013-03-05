@@ -54,9 +54,9 @@ Class Smtp2redis
 
       //just to see whats up on errors, it really should be stringed in extension
       $event_errors = array(
-          'EVBUFFER_READ' => 1,
+          //'EVBUFFER_READ' => 1,
           'EVBUFFER_WRITE' => 2,
-          'EVBUFFER_EOF' => 16,
+          //'EVBUFFER_EOF' => 16,
           'EVBUFFER_ERROR' => 32,
           'EVBUFFER_TIMEOUT' => 64
       );

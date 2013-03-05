@@ -28,13 +28,22 @@ $GLOBALS['cache_param'] = 5;
 $GLOBALS['allowed_hosts'] = array('oopzy.com');
 $GLOBALS['host_name'] = 'oopzy.com';
 
+$GLOBALS['PRIVATE_KEY'] = '#27drue';
+
 $GLOBALS['www_host_name'] = 'www.oopzy.com';
 
 $GLOBALS['production'] = false;
 
-$GLOBALS['REDISHOST'] = 'localhost';
+$GLOBALS['REDISHOST'] = '127.0.0.1';
 $GLOBALS['REDISPORT'] = 6379;
 $GLOBALS['REDISDB'] = 0;
+
+$GLOBALS['SMTP_HOST'] = 'smtp.gmail.com';
+$GLOBALS['SMTP_PORT'] = 465;
+$GLOBALS['SMTP_SSL'] = 'ssl';
+$GLOBALS['SMTP_USER'] = 'andrew@yasinsky.com';
+$GLOBALS['SMTP_PASSWORD'] = 'mus1kpus1k';
+
 
 //make it self settable based on language used
 $GLOBALS['MESSAGES'] = array(
@@ -42,7 +51,12 @@ $GLOBALS['MESSAGES'] = array(
                                                     'MSG_VERIFY_BODY_HTML'=>"Please verify this email (%s) \n by clicking on this link ( <a href='%s'>%s</a> ), \n if you can not click it cut and paste it into your browser",
                                                     'MSG_VERIFY_SUBJECT'=>'Verification request from Oopzy.com',
                                                     'MSG_VERIFY_NOSELF'=> 'You can not use to forward ' . $GLOBALS['host_name'] . ' mails emails ',
-                                                    'MSG_VERIFY_INVALID'=> 'Invalid Email ',
+                                                    'MSG_VERIFY_INVALID_EMAIL'=> 'Invalid Email ',
+                                                    'MSG_VERIFY_TOKEN'=> 'Invalid Token ',
+                                                    'MSG_VERIFY_INVALID_BOX'=> 'Invalid Box ',
+                                                    'MSG_VERIFY_LOW_BOX_QUALITY'=> 'Low Box Quality ',
+                                                    'MSG_SAVE_MESSAGE_VERIFY' => "This email needs verification,\n please check it for further instructions.\n Once email ownership verified we will complete this request",
+                                                    'MSG_VERIFY_INVALID_TOKEN' => 'Invalid Token'
                                                 );
 
 //===============================================

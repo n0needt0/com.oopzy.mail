@@ -40,11 +40,8 @@
                   $dt['from'] = $emailParser->getHeader('from');
                   $dt['dt'] = $emailParser->getHeader('Date');
                   $dt['subject'] = $emailParser->getSubject();
-                  $ttl = $redis->ttl($keys[$key]);
-
                   $dt['debug'] = $data['debug'];
 
-                  $dt['expirein'] = date('i:s' ,$ttl );
                   $emailDeliveredToHeader = $emailParser->getHeader('Delivered-To');
 
                   $dt['body'] = $emailParser->getPlainBody();

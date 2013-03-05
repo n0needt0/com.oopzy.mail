@@ -1,7 +1,38 @@
 <?php
 Class utils
 {
-  public function json_indent($json) {
+
+    public function get_message($key)
+    {
+        if(isset($GLOBALS['MESSAGES'][$key]))
+        {
+            return $GLOBALS['MESSAGES'][$key];
+        }
+          else
+        {
+           return $key;
+        }
+    }
+
+    public function get_redis($key=false)
+    {
+
+        $redis = new Redis();
+
+        try{
+                //here where we get proper connection
+
+                $redis->connect($GLOBALS['REDISHOST'], $GLOBALS['REDISPORT']);
+                return $redis;
+
+          }
+            catch(Exception $e)
+          {
+              throw new Exception($e->getMessage());
+          }
+    }
+
+    public function json_indent($json) {
 
           $result      = '';
           $pos         = 0;
@@ -55,6 +86,7 @@ Class utils
       public function box_quality($box)
       {
           $quality = 0;
+
           //if the password length is less than 6, return message.
           if (strlen($box) < 6)
           {
