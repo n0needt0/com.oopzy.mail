@@ -96,7 +96,8 @@ SPAN.good{
 		                         save_3:'Forward all emails from:',
 		                         save_4:'to this email.',
 		                         whycare:'why care?',
-		                         initbox: 'Enter Your Mail'
+		                         initbox: 'Enter Your Mail',
+		                         invalidfirst:'1st must be alfa numeric'
 			                   };
 
 

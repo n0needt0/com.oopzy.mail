@@ -2,7 +2,19 @@ function checkStrength(str){
 
   	  var strength = 0;
       var res = '';
-
+      
+      var p = str.charAt(0);
+      debug(p);
+    	//if it has one special character, increase strength str
+       if (p.match(/([!,%,&,@,#,$,^,*,?,_,~])/)){
+             return 'invalidfirst'; //invalid first char
+       }
+       
+       if(!isValidEmail(str + '@domain.com'))
+   	  {
+	   		return 'invalid';
+   	  }
+      
         //if the password length is less than 6, return message.
         if (str.length < 6) {
       	    res = 'too_short';
@@ -11,10 +23,10 @@ function checkStrength(str){
 
         //length is ok, lets continue.
 
-    	//if length is 8 characters or more, increase strength str
-    	if (str.length > 7){
+    	if (str.length > 5){
         	strength += 1;
     	}
+    	
 
     	//if password contains both lower and uppercase characters, increase strength str
     	if (str.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)){
@@ -39,19 +51,12 @@ function checkStrength(str){
     	//now we have calculated strength str, we can return messages
 
     	//if str is less than 2
-    	if (strength < 2 ) {
+        if (strength < 2 ) {
     		res = 'bad';
     	} else if (strength == 2 ) {
     		res = 'lousy';
     	} else {
     		res = 'good';
-    	}
-
-    	if(!isValidEmail(str + '@domain.com'))
-    	{
-    	    $(out).removeClass();
-    		$(out).addClass('weak');
-    		res = 'invalid';
     	}
 
     	return res;
