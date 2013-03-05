@@ -10,14 +10,7 @@ Class Smtp2redis
 {
     public function __construct()
     {
-         //just to see whats up on errors, it really should be stringed in extension
-         $this->event_errors = array(
-            'EVBUFFER_READ' => 1,
-            'EVBUFFER_WRITE' => 2,
-            'EVBUFFER_EOF' => 16,
-            'EVBUFFER_ERROR' => 32,
-            'EVBUFFER_TIMEOUT' => 64
-        );
+
     }
 
     public function run()
@@ -58,9 +51,19 @@ Class Smtp2redis
 
     private function event_error($buffer, $error, $id)
     {
+
+      //just to see whats up on errors, it really should be stringed in extension
+      $event_errors = array(
+          'EVBUFFER_READ' => 1,
+          'EVBUFFER_WRITE' => 2,
+          'EVBUFFER_EOF' => 16,
+          'EVBUFFER_ERROR' => 32,
+          'EVBUFFER_TIMEOUT' => 64
+      );
+
         $errors = array();
 
-        foreach ($this->event_errors as $error_type => $error_code)
+        foreach ($event_errors as $error_type => $error_code)
         {
             if ($error  & $error_code)
             {
@@ -99,7 +102,7 @@ Class Smtp2redis
 
         $next_id++;
 
-        $buffer = event_buffer_new($connection, array($this,'event_read'), array($this,'event_write'), array($this,'event_error'), $next_id);
+        $buffer = event_buffer_new($connection, array($this,'event_read'), array($this,'event_write'), 'self::event_error', $next_id);
 
         if(false === $buffer)
         {
