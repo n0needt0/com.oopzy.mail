@@ -95,7 +95,7 @@ Class utils
 
           if(!filter_var($box . '@oopzy.com', FILTER_VALIDATE_EMAIL))
           {
-             return 0;
+             return -1;
           }
 
           if (strlen($box) > 6)
