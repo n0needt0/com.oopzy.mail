@@ -413,6 +413,7 @@ Class Smtp2redis
 
     $emailParser = new PlancakeEmailParser($email);
     $boxto = $emailParser->getTo();
+    $boxto = $boxto[0];
 
     $this->log_line("rcp_to $boxto", 1);
 
