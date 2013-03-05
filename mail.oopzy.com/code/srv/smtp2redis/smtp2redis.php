@@ -67,7 +67,7 @@ Class Smtp2redis
             }
         }
 
-        $err =  'error event #'.$error_ids.' '.join(' | ', $error)."\n";
+        $err =  'error event #'. join(' | ', $error)."\n";
 
         $this->log_line("ERROR: $err" , 1);
         event_buffer_disable($this->clients[$id]['ev_buffer'], EV_READ | EV_WRITE);
@@ -163,7 +163,7 @@ Class Smtp2redis
           // not ready unless you get a \r\n.\r\n at the end
           $len = strlen($this->clients[$id]['read_buffer']);
 
-          if (($len > MESSAGE_MAX_SIZE) || (($len > 4) && (strpos($this->clients[$id]['read_buffer'], "\r\n.\r\n", $len - 5)) !== false) )
+          if (($len > MESSAGE_MAX_SIZE_GOOD) || (($len > 4) && (strpos($this->clients[$id]['read_buffer'], "\r\n.\r\n", $len - 5)) !== false) )
           {
                $this->clients[$id]['read_buffer_ready'] = true; // finished
                $this->clients[$id]['read_buffer'] = substr($this->clients[$id]['read_buffer'], 0, $len - 5);
@@ -211,8 +211,7 @@ Class Smtp2redis
 
                 $this->clients[$client_id]['helo'] = trim($temp[1]);
                 $this->add_response($client_id, '250-' . SERVICE_HOST_NAME . ' Hello ' . trim($temp[1]) .
-                '[' . $this->clients[$client_id]['address'] . ']' . "\r\n" . "250-SIZE " .
-                MESSAGE_MAX_SIZE . "\r\n" . "250 HELP");
+                '[' . $this->clients[$client_id]['address'] . ']' . "\r\n" . "250-SIZE  TOO BIG\r\n" . "250 HELP");
           }
             elseif (stripos($input, 'MAIL FROM:') === 0)
           {
