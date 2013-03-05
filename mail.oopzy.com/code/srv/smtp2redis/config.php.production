@@ -1,3 +1,4 @@
+<?php
 define('MESSAGE_MAX_SIZE', 10024);
 define('SERVICE_HOST_NAME', 'oopzy.com'); // This should also be set to reflect your RDNS
 define('TIMEOUT', 10); // how many seconds before timeout.
