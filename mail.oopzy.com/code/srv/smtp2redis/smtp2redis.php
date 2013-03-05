@@ -519,7 +519,7 @@ Class Smtp2redis
 
       $key = $to . ':' .time();
 
-      $res = $redisdb->setex($key, REDIS_TTL, $data );
+      $res = $redisdb->setex($key, $ttl, $data );
 
       if($res)
       {
