@@ -106,7 +106,7 @@ namespace :deploy do
    end
   
   desc "restart correct smtp2redis"
-   task :restart_correct_smtp2redis , :on_error => :continue do
+   task :restart_correct_smtp2redis do
      sudo "restart smtp2redis"
    end
   
