@@ -74,7 +74,7 @@ Class Smtp2redis
         if(count($errors))
         {
             $err =  'error event #'. join(' | ', $errors)."\n";
-            $this->log_line("ERROR: $err" , 1);
+            $this->log_line("INFO: $err" , 1);
             event_buffer_disable($this->clients[$id]['ev_buffer'], EV_READ | EV_WRITE);
             event_buffer_free($this->clients[$id]['ev_buffer']);
             fclose($this->clients[$id]['socket']);
