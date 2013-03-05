@@ -405,13 +405,6 @@ Class Smtp2redis
       return array(false, false);
     }
 
-    if( strlen($email) >= MESSAGE_MAX_SIZE)
-    {
-         $this->GM_ERROR = 'Message too large ' . MESSAGE_MAX_SIZE . ' bytes max';
-         return array(false, false);
-     }
-
-
     list($mail_user, $mail_host) = explode('@', $rcpt_to);
 
     if (!in_array($mail_host, $this->ALLOWED_HOSTS))
@@ -430,17 +423,27 @@ Class Smtp2redis
     if($box_quality < 2)
     {
         $ttl = REDIS_TTL_BAD;
+        $mmax = MESSAGE_MAX_SIZE_BAD;
     }
     elseif($box_quality > 4)
     {
         $ttl = REDIS_TTL_GOOD;
+        $mmax = MESSAGE_MAX_SIZE_GOOD;
     }
     else
     {
         $ttl = REDIS_TTL_OK;
+        $mmax = MESSAGE_MAX_SIZE_BAD;
     }
 
-    $debug = array('bq'=>$box_quality);
+    if( strlen($email) >= $mmax)
+    {
+      $this->GM_ERROR = 'Message too large ' . $mmax . ' bytes max';
+      return array(false, false);
+    }
+
+
+    $debug = array('bq'=>$box_quality, 'mm'=>$mmax);
 
     $sdata = serialize(array('email'=>$email, 'debug'=>$debug));
 
