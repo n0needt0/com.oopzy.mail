@@ -1,5 +1,6 @@
 <?php
 require(dirname(__FILE__) .'/config.php');
+require(dirname(__FILE__) .'/vendors/PlancakeEmailParser/PlancakeEmailParser.php');
 
 set_time_limit(0);
 
@@ -406,13 +407,16 @@ Class Smtp2redis
   {
     if(preg_match('/name=[^>]*\.(.+)/', $email))
     {
-      $this->GM_ERROR = 'ERROR: ments not supported';
+      $this->GM_ERROR = 'ERROR: Attacments not supported for now';
       return array(false, false);
     }
 
-    $this->log_line("rcp_to $rcpt_to", 1);
+    $emailParser = new PlancakeEmailParser($email);
+    $boxto = $emailParser->getTo();
 
-    list($mail_user, $mail_host) = explode('@', $rcpt_to);
+    $this->log_line("rcp_to $boxto", 1);
+
+    list($mail_user, $mail_host) = explode('@', $boxto);
 
     if (!in_array($mail_host, $this->ALLOWED_HOSTS))
     {
