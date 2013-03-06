@@ -1,6 +1,7 @@
 <?php
 
 require_once APP_PATH. 'models/oopzy_model.php';
+
 /*String*/ function _save_message()
 {
     $ref = $_POST['ref'];
@@ -22,10 +23,19 @@ require_once APP_PATH. 'models/oopzy_model.php';
       $message = '';
 
       //see if link is established already and we can process
-      if( !$oopzy->is_linked($box, $toemail) )
+      $res = $oopzy->is_linked($box, $toemail);
+
+      if( !$res)
       {
           //send verification emai;
-          $oopzy->verify_email($toemail, $box);
+
+          $v = $oopzy->verify_email($toemail, $box);
+
+          if(!$v)
+          {
+              $message = utils::get_message($oopzy->get_error());
+              utils::error_echo_die($message);
+          }
 
           $message = utils::get_message('MSG_SAVE_MESSAGE_VERIFY');
       }

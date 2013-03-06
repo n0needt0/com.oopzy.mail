@@ -24,5 +24,5 @@ require_once APP_PATH. 'models/oopzy_model.php';
 
     //TODO , Token redirect
 
-    utils::error_echo_die("");
+    View::output_with_template('templates/main','verified',array('oopzybox'=>$verify->oopzybox,'to'=>$verify->to));
 }

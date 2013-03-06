@@ -11,4 +11,3 @@ function _index($box='')
 
   View::output_with_template('templates/main','mail',array('box'=>$box, 'rememberme'=>$rememberme));
 }
-

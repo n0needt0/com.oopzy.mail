@@ -15,6 +15,11 @@
             padding-top: 10px;
       }
 
+      SPAN.wait{
+      float:left;
+      padding-top:280px;
+      }
+
       A.saveme{
       float:right;
       }
@@ -66,6 +71,10 @@ SPAN.too_short{
 	color:#FF0000;
 }
 
+SPAN.invalidfirst{
+	color:#FF0000;
+}
+
 SPAN.bad{
 	color:#E66C2C;
 }
@@ -97,7 +106,8 @@ SPAN.good{
 		                         save_4:'to this email.',
 		                         whycare:'why care?',
 		                         initbox: 'Enter Your Mail',
-		                         invalidfirst:'1st must be alfa numeric'
+		                         invalidfirst:'1st must be alfa numeric',
+		                         nomessages:'No new messages'
 			                   };
 
 
@@ -120,11 +130,16 @@ Oopzy.JST = Oopzy.JST || {};
 
 	Oopzy.JST['tl/save'] = _.template(
 			  "<div id='save-confirm' title='Save this email'>"+
-			  "<p><span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>"+
+			  "<p><span id='wait'></span>"+
+			  "<span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span>"+
 			  "<%=save_1 %> </br>"+
 			  "<input id='remailto'> </br><input type='checkbox' id='rememberremail'> <%=save_2 %> </br>"+
 			  "<input type='checkbox' id='alwaysremail'> <%=save_3 %> </br><span id='autofrom'></span> <%=save_4 %></p>" +
 			  "</div>"
+			);
+
+	Oopzy.JST['tl/verifying'] = _.template(
+			"<pre class='hl-yellow'><span class='ui-icon ui-icon-alert' style='float: left; margin: 0 7px 20px 0;'></span><%= error%></pre>"
 			);
 
 	(function poll(){
@@ -179,7 +194,7 @@ Oopzy.JST = Oopzy.JST || {};
         			 {
             			 $('#nomessage').remove();
             			 setTimeout(function(){
-            				 $('#messages').prepend("<PRE class='message' id='nomessage'><h2>No new messages...</h2></PRE>");
+            				 $('#messages').prepend("<PRE class='message' id='nomessage'><h2>"+Oopzy.messages.nomessages+"...</h2></PRE>");
             	        	 },1000);
             		 }
         			   else
@@ -252,16 +267,42 @@ Oopzy.JST = Oopzy.JST || {};
       	modal: true,
         	buttons: {
               	  "Save": function() {
+
               		var box = $('#remailto').val();
 
               		if(isValidEmail(box))
               		{
                     	createCookie('rememail', box, 365);
-                		$.post("/save_message", { ref: Oopzy.ref, to: $('#remailto').val() })
-                  		.done(function(data) {
-                      		debug(data);
-                      		$( "#save-confirm" ).dialog( "close" );
-                		});
+
+                    	$("#wait").html("<img src = '/assets/images/loading.gif' />");
+
+                		$.post("/save_message", { ref: Oopzy.ref, to: $('#remailto').val() },
+                  		function(data) {
+                      		debug(data.error);
+
+                      		$("#wait").html("");
+
+                      		if ("" != data.error) {
+                      	      $("#tips").html(Oopzy.JST['tl/verifying']({'error':data.error}));
+                      	      $("#tips").dialog({
+                      	    	width:325,
+                      	      	height:285,
+                      	    	hide: "explode",
+                      	    	autoOpen:true,
+                            	modal: true,
+                              	buttons: {
+                                	  "Ok": function() {
+                                		   $("#tips").dialog("close");
+                                		   $("#tips").html("");
+                                		   $( "#save-confirm" ).dialog( "close" );
+                                  		}
+                              	}
+                      	      });
+                      	    }
+
+
+                		},'json'
+                		);
               		}
               		 else
               		{
@@ -281,8 +322,9 @@ Oopzy.JST = Oopzy.JST || {};
 		$( "#save-confirm" ).dialog( "open" );
   		$('#autofrom').html("<a href='" + Oopzy.autofrom + "'><i>" + Oopzy.autofrom + "</i></a>");
 
-  		if($('#rememberremail').is(':checked'))
+  		if(readCookie('remremail'))
 		{
+  			 $('#rememberremail').attr('checked','checked');
 	         var box = readCookie('rememail');
 	         $('#remailto').val(box);
 		}

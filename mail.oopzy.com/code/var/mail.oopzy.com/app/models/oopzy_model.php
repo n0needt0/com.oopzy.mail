@@ -3,12 +3,17 @@
 Class Oopzy_model
 {
 
+  function __construct()
+  {
+      $this->oopzybox='';
+      $this->to = '';
+  }
   public function do_remail_queue($ref, $box, $toemail)
   {
 
   }
 
-  /*void*/ function verify_email($obj,$box)
+  /*void*/ function verify_email($obj,$box,$qualityonly=false)
   {
 
       $this->error_message = '';
@@ -35,15 +40,18 @@ Class Oopzy_model
               return false;
           }
 
-          $quality = utils::box_quality($box);
-
-          if($quality < 3)
+          if($qualityonly)
           {
-              $this->error_message = utils::get_message('MSG_VERIFY_LOW_BOX_QUALITY') . "[$quality]";
-              return false;
+              $quality = utils::box_quality($box);
+
+              if($quality < 3)
+              {
+                  $this->error_message = utils::get_message('MSG_VERIFY_LOW_BOX_QUALITY') . "[$quality]";
+                  return false;
+              }
           }
 
-        $token = md5($obj . time().$GLOBALS['PRIVATE_KEY']);
+        $token = md5($obj . $GLOBALS['PRIVATE_KEY']); //no need to seed with time
         $url = 'http://' . $GLOBALS['www_host_name'] . '/verify_token/' . $token;
         $message = sprintf(utils::get_message('MSG_VERIFY_BODY'), $obj, $url);
         $message_html = sprintf(utils::get_message('MSG_VERIFY_BODY_HTML'), $obj, $url, $url);
@@ -129,9 +137,13 @@ Class Oopzy_model
                 if(isset($res['to']) && isset($res['for']))
                 {
 
+                  $this->oopzybox = $res['for'];
+                  $this->to = $res['to'];
+
                   //otherwise start list
                   $key = self::create_link_key($res['for'] , $res['to']);
                   $res_redis = $redis->setex($key, 60*60*24*30 , 1 ); //set for 30 days
+
                   return true;
             }
           }

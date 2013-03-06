@@ -54,8 +54,8 @@ $GLOBALS['MESSAGES'] = array(
                                                     'MSG_VERIFY_INVALID_EMAIL'=> 'Invalid Email ',
                                                     'MSG_VERIFY_TOKEN'=> 'Invalid Token ',
                                                     'MSG_VERIFY_INVALID_BOX'=> 'Invalid Box ',
-                                                    'MSG_VERIFY_LOW_BOX_QUALITY'=> 'Low Box Quality ',
-                                                    'MSG_SAVE_MESSAGE_VERIFY' => "This email needs verification,\n please check it for further instructions.\n Once email ownership verified we will complete this request",
+                                                    'MSG_VERIFY_LOW_BOX_QUALITY'=> 'Your oopzy box name quality is too low ',
+                                                    'MSG_SAVE_MESSAGE_VERIFY' => "This email needs verification,\n please check it for instructions.\n Once email ownership is verified \n forwarding request will complete.",
                                                     'MSG_VERIFY_INVALID_TOKEN' => 'Invalid Token'
                                                 );
 
