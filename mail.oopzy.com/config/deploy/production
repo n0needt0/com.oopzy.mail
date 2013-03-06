@@ -1,1 +1,1 @@
-server "50.116.26.97", :web, :app
+server "192.81.130.101", :web, :app

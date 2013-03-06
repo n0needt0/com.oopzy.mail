@@ -1,0 +1,3 @@
+- Since the server needs to use port 25, make sure to start as root/admin
+- Ensure that your PHP has mb_string and mailparse extensions enabled.
+also requires php sockets, iconv, eventlib

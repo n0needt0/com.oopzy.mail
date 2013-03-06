@@ -303,6 +303,7 @@ Oopzy.JST = Oopzy.JST || {};
 
                 		},'json'
                 		);
+                		$( "#save-confirm" ).dialog( "close" );
               		}
               		 else
               		{
