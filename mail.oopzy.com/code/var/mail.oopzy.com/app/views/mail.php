@@ -364,7 +364,7 @@ Oopzy.JST = Oopzy.JST || {};
 
 });
 </script>
-<form>
+
 <div class="mini-layout">
     <div class="mini-layout-body">
       <div id='form' class='form-inline'>
@@ -380,4 +380,3 @@ Oopzy.JST = Oopzy.JST || {};
 <div id='savepop'></div>
 <div id='tips'></div>
 </div>
-</form>
