@@ -101,7 +101,6 @@ Class Oopzy_model
             $this->error_message = 'Exception: ' . $e->getMessage();
             return false;
         }
-      }
   }
 
   public function verify_token($obj)
