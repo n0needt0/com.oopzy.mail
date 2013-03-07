@@ -359,6 +359,9 @@ Oopzy.JST = Oopzy.JST || {};
              $('#submit').click();
           }
     })
+
+    $('#mailbox').focus();
+
 });
 </script>
 <form>
