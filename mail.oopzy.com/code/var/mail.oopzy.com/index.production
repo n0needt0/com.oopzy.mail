@@ -38,11 +38,11 @@ $GLOBALS['REDISHOST'] = '127.0.0.1';
 $GLOBALS['REDISPORT'] = 6379;
 $GLOBALS['REDISDB'] = 0;
 
-$GLOBALS['SMTP_HOST'] = 'smtp.gmail.com';
+$GLOBALS['SMTP_HOST'] = 'smtp.oopzy.com';
 $GLOBALS['SMTP_PORT'] = 465;
-$GLOBALS['SMTP_SSL'] = 'ssl';
-$GLOBALS['SMTP_USER'] = 'andrew@yasinsky.com';
-$GLOBALS['SMTP_PASSWORD'] = 'mus1kpus1k';
+$GLOBALS['SMTP_SSL'] = '';
+$GLOBALS['SMTP_USER'] = 'hampster@oopzy.com';
+$GLOBALS['SMTP_PASSWORD'] = '0ne0rtw0!';
 
 
 //make it self settable based on language used
