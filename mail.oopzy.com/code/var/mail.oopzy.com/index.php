@@ -28,13 +28,15 @@ $GLOBALS['cache_param'] = 8;
 $GLOBALS['allowed_hosts'] = array('oopzy.com');
 $GLOBALS['host_name'] = 'oopzy.com';
 
+$GLOBALS['mail_from'] = 'mailer@oopzy.com';
+
 $GLOBALS['PRIVATE_KEY'] = '#27drue';
 
 $GLOBALS['www_host_name'] = 'mail.oopzy.com';
 
 $GLOBALS['production'] = false;
 
-$GLOBALS['REDISHOST'] = '50.116.26.97';
+$GLOBALS['REDISHOST'] = 'oopzy.com';
 $GLOBALS['REDISPORT'] = 6379;
 $GLOBALS['REDISDB'] = 0;
 

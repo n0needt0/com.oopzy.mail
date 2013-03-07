@@ -1,6 +1,6 @@
 <?php
 
-require_once APP_PATH. 'models/oopzy_model.php';
+require_once APP_PATH. 'models/Oopzy_model.php';
 
 /*String*/ function _save_message()
 {

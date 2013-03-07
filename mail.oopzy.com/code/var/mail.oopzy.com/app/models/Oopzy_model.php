@@ -72,12 +72,11 @@ Class Oopzy_model
           $res_redis = $redis->setex($token, 60*10 , serialize( array('to'=>$obj,'for'=>$box)) ); //10 min ttl
 
           #mailer
-          require_once('Oopzy_mail.php');
+          require_once APP_PATH. 'models/Oopzy_mail.php';
 
           $mailer = new Oopzy_Mail();
-          $from = 'Info@' . $GLOBALS['host_name'];
 
-          $res_email = $mailer->send_email($from, $obj, $subject);
+          $res_email = $mailer->send_email($GLOBALS['mail_from'], $obj, $subject, $message,$message_html);
 
           if(!$res_email)
           {
@@ -91,7 +90,7 @@ Class Oopzy_model
                 return false;
           }
 
-          if($res_redis && $res_mail)
+          if($res_redis && $res_email)
           {
               return true;
           }

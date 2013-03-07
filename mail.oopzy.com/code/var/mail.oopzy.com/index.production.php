@@ -28,6 +28,8 @@ $GLOBALS['cache_param'] = 5;
 $GLOBALS['allowed_hosts'] = array('oopzy.com');
 $GLOBALS['host_name'] = 'oopzy.com';
 
+$GLOBALS['mail_from'] = 'mailer@oopzy.com';
+
 $GLOBALS['PRIVATE_KEY'] = '#27drue';
 
 $GLOBALS['www_host_name'] = 'www.oopzy.com';
