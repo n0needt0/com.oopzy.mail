@@ -1,11 +1,5 @@
-#RewriteEngine On
+RewriteEngine On
 RewriteBase /
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteCond %{REQUEST_FILENAME} !-d
-#RewriteCond $1 !^(assets|robots\.txt)
-#RewriteRule ^(.*)$ index.php/$1 [L]
 
-
-RewriteEngine on
-RewriteCond $1 !^(index\.php|favicon\.ico|dbtest\.php|dctest\.php|assets|connections|_mmServerScripts|robots\.txt|healthcheck\.php)
+RewriteCond $1 !^(index\.php|favicon\.ico|assets|_mmServerScripts|robots\.txt|healthcheck\.php)
 RewriteRule ^(.*)$ /index.php/$1 [L]
