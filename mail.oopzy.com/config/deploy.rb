@@ -89,6 +89,8 @@ namespace :deploy do
   desc "get correct config"
   task :get_correct_config do
     run "cp #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/index.#{stage} #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/index.php"
+    
+    run "cp #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/.htaccess.#{stage} #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/.htaccess"
   end
   
  desc "get correct smtp2redis"
