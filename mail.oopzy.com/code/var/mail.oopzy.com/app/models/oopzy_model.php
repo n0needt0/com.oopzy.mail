@@ -27,42 +27,45 @@ Class Oopzy_model
       //if obj is email init verification
       $result = filter_var($obj, FILTER_VALIDATE_EMAIL);
 
-      if(!empty($result))
+      if(empty($result))
       {
+          $this->error_message = utils::get_message('MSG_VERIFY_INVALID_EMAIL');
+          return false;
+      }
 
-          if(stristr($obj, $GLOBALS['host_name']))
-          {
-            //we do not verify ourselves
-              $this->error_message =utils::get_message('MSG_VERIFY_NOSELF');
-              return false;
-          }
+       if(stristr($obj, $GLOBALS['host_name']))
+      {
+           //we do not verify ourselves
+           $this->error_message =utils::get_message('MSG_VERIFY_NOSELF');
+           return false;
+       }
 
-          if(empty($box))
-          {
-              $this->error_message = utils::get_message('MSG_VERIFY_INVALID_BOX');
-              return false;
-          }
+       if(empty($box))
+       {
+            $this->error_message = utils::get_message('MSG_VERIFY_INVALID_BOX');
+            return false;
+        }
 
-          if($qualityonly)
-          {
-              $quality = utils::box_quality($box);
+        if($qualityonly)
+        {
+             $quality = utils::box_quality($box);
 
               if($quality < 3)
               {
                   $this->error_message = utils::get_message('MSG_VERIFY_LOW_BOX_QUALITY') . "[$quality]";
                   return false;
               }
-          }
+         }
 
-        $token = md5($obj . $GLOBALS['PRIVATE_KEY']); //no need to seed with time
-        $url = 'http://' . $GLOBALS['www_host_name'] . '/verify_token/' . $token;
-        $message = sprintf(utils::get_message('MSG_VERIFY_BODY'), $obj, $url);
-        $message_html = sprintf(utils::get_message('MSG_VERIFY_BODY_HTML'), $obj, $url, $url);
-        $subject = utils::get_message('MSG_VERIFY_SUBJECT');
+          $token = md5($obj . $GLOBALS['PRIVATE_KEY']); //no need to seed with time
+          $url = 'http://' . $GLOBALS['www_host_name'] . '/verify_token/' . $token;
+          $message = sprintf(utils::get_message('MSG_VERIFY_BODY'), $obj, $url);
+          $message_html = sprintf(utils::get_message('MSG_VERIFY_BODY_HTML'), $obj, $url, $url);
+          $subject = utils::get_message('MSG_VERIFY_SUBJECT');
 
-        //set request to redis
+          //set request to redis
 
-        $redis = new Redis();
+          $redis = new Redis();
 
         try{
           $redis->connect($GLOBALS['REDISHOST'], $GLOBALS['REDISPORT']);
@@ -71,9 +74,8 @@ Class Oopzy_model
           require_once APP_PATH. 'vendors/swift/lib/swift_required.php';
 
           // Create the Transport
-          $transport = Swift_SmtpTransport::newInstance($GLOBALS['SMTP_HOST'], $GLOBALS['SMTP_PORT'], $GLOBALS['SMTP_SSL'])
-          ->setUsername($GLOBALS['SMTP_USER'])
-          ->setPassword($GLOBALS['SMTP_PASSWORD']);
+
+          $transport = Swift_SmtpTransport::newInstance($GLOBALS['SMTP_HOST'], $GLOBALS['SMTP_PORT']);
 
           // Create the Mailer using your created Transport
           $mailer = Swift_Mailer::newInstance($transport);
@@ -109,9 +111,6 @@ Class Oopzy_model
             return false;
         }
       }
-
-      $this->error_message = utils::get_message('MSG_VERIFY_INVALID_EMAIL');
-      return false;
   }
 
   public function verify_token($obj)
