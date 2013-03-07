@@ -93,7 +93,9 @@ Class utils
               return $quality;
           }
 
-          if(!filter_var($box . '@oopzy.com', FILTER_VALIDATE_EMAIL))
+          $result = filter_var($box . '@oopzy.com', FILTER_VALIDATE_EMAIL);
+
+          if(empty($result))
           {
              return -1;
           }

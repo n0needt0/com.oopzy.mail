@@ -25,8 +25,11 @@ Class Oopzy_model
       }
 
       //if obj is email init verification
-      if(filter_var($obj, FILTER_VALIDATE_EMAIL))
+      $result = filter_var($obj, FILTER_VALIDATE_EMAIL);
+
+      if(empty($result))
       {
+
           if(stristr($obj, $GLOBALS['host_name']))
           {
             //we do not verify ourselves
