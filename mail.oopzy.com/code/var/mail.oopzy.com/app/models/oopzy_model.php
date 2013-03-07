@@ -100,6 +100,18 @@ Class Oopzy_model
 
           $res_mail = $mailer->send($msg);
 
+          if(!res_email)
+          {
+               $this->error_message = 'SMTP Failed';
+                return false;
+          }
+
+          if(!res_redis)
+          {
+            $this->error_message = 'REDIS Failed';
+            return false;
+          }
+
           if($res_redis && $res_mail)
           {
               return true;
