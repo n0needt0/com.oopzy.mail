@@ -38,6 +38,7 @@ $GLOBALS['REDISHOST'] = '50.116.26.97';
 $GLOBALS['REDISPORT'] = 6379;
 $GLOBALS['REDISDB'] = 0;
 
+$GLOBALS['SMTP'] = 'full';
 $GLOBALS['SMTP_HOST'] = 'smtp.gmail.com';
 $GLOBALS['SMTP_PORT'] = 465;
 $GLOBALS['SMTP_SSL'] = 'ssl';

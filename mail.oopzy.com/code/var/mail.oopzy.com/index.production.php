@@ -38,6 +38,7 @@ $GLOBALS['REDISHOST'] = '127.0.0.1';
 $GLOBALS['REDISPORT'] = 6379;
 $GLOBALS['REDISDB'] = 0;
 
+$GLOBALS['SMTP'] = 'basic';
 $GLOBALS['SMTP_HOST'] = 'smtp.oopzy.com';
 $GLOBALS['SMTP_PORT'] = 465;
 $GLOBALS['SMTP_SSL'] = '';

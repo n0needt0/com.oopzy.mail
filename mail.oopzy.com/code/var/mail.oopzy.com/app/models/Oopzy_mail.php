@@ -7,7 +7,16 @@ Class Oopzy_Mail
     function send_email($from,$to,$subject,$message='',$message_html='')
     {
           // Create the Transport
-          $transport = Swift_SmtpTransport::newInstance($GLOBALS['SMTP_HOST'], $GLOBALS['SMTP_PORT']);
+          if($GLOBALS['SMTP'] = 'basic')
+          {
+              $transport = Swift_SmtpTransport::newInstance($GLOBALS['SMTP_HOST'], $GLOBALS['SMTP_PORT']);
+          }
+            else
+          {
+              $transport = Swift_SmtpTransport::newInstance($GLOBALS['SMTP_HOST'], $GLOBALS['SMTP_PORT'], $GLOBALS['SMTP_SSL'])
+              ->setUsername($GLOBALS['SMTP_USER'])
+              ->setPassword($GLOBALS['SMTP_PASSWORD']);
+          }
 
           // Create the Mailer using your created Transport
           $mailer = Swift_Mailer::newInstance($transport);
