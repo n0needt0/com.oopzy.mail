@@ -27,7 +27,7 @@ Class Oopzy_model
       //if obj is email init verification
       $result = filter_var($obj, FILTER_VALIDATE_EMAIL);
 
-      if(empty($result))
+      if(!empty($result))
       {
 
           if(stristr($obj, $GLOBALS['host_name']))
