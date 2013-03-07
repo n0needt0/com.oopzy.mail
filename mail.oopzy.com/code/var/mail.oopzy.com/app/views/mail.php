@@ -358,7 +358,7 @@ Oopzy.JST = Oopzy.JST || {};
 
     <div class="mini-layout-body">
       <div id='form' class='form-inline'>
-        <span id="result"></span><input id='mailbox' value='<?php echo $box;?>'><span id='label'>@<?php echo $GLOBALS['host_name']; ?></span></input><button id='submit' class='btn btn-success btn-large'> <i class="icon-envelope"></i> receive </button>
+        <span id="result"></span><input id='mailbox' value='<?php echo $box;?>'><span id='label'>@<?php echo $GLOBALS['host_name']; ?></span></input><button type='submit' id='submit' class='btn btn-success btn-large'> <i class="icon-envelope"></i> receive </button>
         <label class="checkbox">
             <input type="checkbox" id='rememberme' <?php echo $rememberme;?>> Remember me
         </label>
