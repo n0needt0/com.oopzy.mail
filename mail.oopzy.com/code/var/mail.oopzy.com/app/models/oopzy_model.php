@@ -75,6 +75,7 @@ Class Oopzy_model
           require_once('Oopzy_mail.php');
 
           $mailer = new Oopzy_Mail();
+          $from = 'Info@' . $GLOBALS['host_name'];
 
           $res_email = $mailer->send_email($from, $obj, $subject);
 

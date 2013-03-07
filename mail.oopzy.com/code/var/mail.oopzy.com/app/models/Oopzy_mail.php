@@ -28,7 +28,7 @@ Class Oopzy_Mail
           ->setSubject($subject)
 
           // Set the From address with an associative array
-          ->setFrom(array('Info@' . $GLOBALS['host_name'] => 'Info@' . $GLOBALS['host_name']))
+          ->setFrom(array($from))
 
           // Set the To addresses with an associative array
           ->setTo(array($to))
@@ -39,7 +39,7 @@ Class Oopzy_Mail
           // And optionally an alternative body
           ->addPart($message_html, 'text/html');
 
-          $res_mail = $mailer->send($msg);
+          $res = $mailer->send($msg);
 
           return $res;
     }

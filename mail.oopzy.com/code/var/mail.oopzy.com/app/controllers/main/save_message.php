@@ -5,12 +5,17 @@ require_once APP_PATH. 'models/oopzy_model.php';
 /*String*/ function _save_message()
 {
     $ref = $_POST['ref'];
+    $toemail = $_POST['to'];
+
+    if(empty($ref) || empty($toemail))
+    {
+      utils::error_echo_die("nothing to process: POST empty");
+    }
 
     $tmp = explode(':',$ref);
     $tmp = explode('@',$tmp[0]);
     $box = $tmp[0];
 
-    $toemail = $_POST['to'];
 
     $redis = new Redis();
 
