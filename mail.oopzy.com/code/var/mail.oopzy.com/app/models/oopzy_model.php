@@ -71,51 +71,30 @@ Class Oopzy_model
           $redis->connect($GLOBALS['REDISHOST'], $GLOBALS['REDISPORT']);
           $res_redis = $redis->setex($token, 60*10 , serialize( array('to'=>$obj,'for'=>$box)) ); //10 min ttl
 
-          require_once APP_PATH. 'vendors/swift/lib/swift_required.php';
+          #mailer
+          require_once('Oopzy_mail.php');
 
-          // Create the Transport
+          $mailer = new Oopzy_Mail();
 
-          $transport = Swift_SmtpTransport::newInstance($GLOBALS['SMTP_HOST'], $GLOBALS['SMTP_PORT']);
+          $res_email = $mailer->send_email($from, $obj, $subject);
 
-          // Create the Mailer using your created Transport
-          $mailer = Swift_Mailer::newInstance($transport);
-
-          // Create the message
-          $msg = Swift_Message::newInstance()
-
-          // Give the message a subject
-          ->setSubject($subject)
-
-          // Set the From address with an associative array
-          ->setFrom(array('nobody@' . $GLOBALS['host_name'] => 'Info@' . $GLOBALS['host_name']))
-
-          // Set the To addresses with an associative array
-          ->setTo(array($obj))
-
-          // Give it a body
-          ->setBody($message)
-
-          // And optionally an alternative body
-          ->addPart($message_html, 'text/html');
-
-          $res_mail = $mailer->send($msg);
-
-          if(!res_email)
+          if(!$res_email)
           {
-               $this->error_message = 'SMTP Failed';
+                throw new Exception("SMTP Error [$res_email]");
                 return false;
           }
 
-          if(!res_redis)
+          if(!$res_redis)
           {
-            $this->error_message = 'REDIS Failed';
-            return false;
+                throw new Exception("Redis Error [$res_redis]");
+                return false;
           }
 
           if($res_redis && $res_mail)
           {
               return true;
           }
+
         }
         catch(Exception $e)
         {
