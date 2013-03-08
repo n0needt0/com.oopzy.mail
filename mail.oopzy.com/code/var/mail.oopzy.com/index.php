@@ -113,13 +113,6 @@ function getdbh() {
 //===============================================
 // Assumes Model Classes start with capital letters and Helpers start with lower case letters
 
-function __autoload($classname) {
-    $a=$classname[0];
-    if ($a >= 'A' && $a <='Z')
-    {
-        require_once(APP_PATH.'models/'.$classname.'.php');
-    }
-}
 
 require_once(APP_PATH.'helpers/utils.php');
 
