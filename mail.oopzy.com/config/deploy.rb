@@ -88,9 +88,9 @@ namespace :deploy do
   
   desc "get correct config"
   task :get_correct_config do
-    run "cp #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/index.#{stage}.php #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/index.php"
+    run "cp #{deploy_to}/current/mail.oopzy.com/code/var/web_apps/mail.oopzy.com/config/config.#{stage}.php #{deploy_to}/current/mail.oopzy.com/code/var/web_apps/mail.oopzy.com/config/config.php"
     
-    run "cp #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/.#{stage}.htaccess #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/.htaccess"
+        run "cp #{deploy_to}/current/mail.oopzy.com/code/var/web_apps/mail.oopzy.com/config/constants.#{stage}.php #{deploy_to}/current/mail.oopzy.com/code/var/web_apps/mail.oopzy.com/config/constants.php"
   end
   
  desc "get correct smtp2redis"
