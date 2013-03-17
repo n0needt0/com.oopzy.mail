@@ -78,7 +78,7 @@ namespace :deploy do
 
   desc "Write current revision to "
   task :publish_revision do
-  run "content=`cat #{deploy_to}/current/REVISION`;ip=`ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`; sed -i \"s/MY_REVISION/$content-$ip/g\" #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/app/views/templates/main.php"
+  run "content=`cat #{deploy_to}/current/REVISION`;ip=`ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`; sed -i \"s/MY_REVISION/$content-$ip/g\" #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/web_apps/mail.oopzy.com/views/templates/main.php"
   end
   
   desc "clean up old releases"
@@ -88,9 +88,9 @@ namespace :deploy do
   
   desc "get correct config"
   task :get_correct_config do
-    run "cp #{deploy_to}/current/mail.oopzy.com/code/var/web_apps/mail.oopzy.com/config/config.#{stage}.php #{deploy_to}/current/mail.oopzy.com/code/var/web_apps/mail.oopzy.com/config/config.php"
+    run "cp #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/web_apps/mail.oopzy.com/config/config.#{stage}.php #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/web_apps/mail.oopzy.com/config/config.php"
     
-        run "cp #{deploy_to}/current/mail.oopzy.com/code/var/web_apps/mail.oopzy.com/config/constants.#{stage}.php #{deploy_to}/current/mail.oopzy.com/code/var/web_apps/mail.oopzy.com/config/constants.php"
+    run "cp #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/web_apps/mail.oopzy.com/config/constants.#{stage}.php #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/web_apps/mail.oopzy.com/config/constants.php"
   end
   
  desc "get correct smtp2redis"
