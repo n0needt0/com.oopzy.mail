@@ -7,9 +7,9 @@
   ServerAdmin webmaster@this.com
   AllowEncodedSlashes On
   DirectoryIndex index.php index.html
-  DocumentRoot /var/www/mail.oopzy.com
-  Alias /assets/  /var/www/mail.oopzy.com/assets/
-  <Directory "/var/www/mail.oopzy.com">
+  DocumentRoot /var/www/mail.oopzy.com/web_roots/mail.oopzy.com
+  Alias /assets/  /var/www/mail.oopzy.com/web_roots/mail.oopzy.com/assets/
+  <Directory "/var/www/mail.oopzy.com/web_roots/mail.oopzy.com">
       Options All
       Options -Indexes
       AllowOverride All
