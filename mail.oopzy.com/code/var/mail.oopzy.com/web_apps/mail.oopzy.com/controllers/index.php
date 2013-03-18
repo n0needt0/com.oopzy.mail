@@ -32,6 +32,7 @@ class Index extends MY_Controller {
 
      function price_list()
      {
+         $this->template('blank');
          $data = array();
          $this->load->view('price_list', $data);
      }
