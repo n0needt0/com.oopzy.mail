@@ -14,7 +14,7 @@
 </style>
 <div class="jumbotron message">
 <h1>We fight spam for freedom</h1>
-<p><img src='/assets/images/oopzybig.png'/></p>
+
 <p class="lead">
  Make up <span class='hl-underline'>ANY</span> <span class='hl-yellow'>address@oopzy.com</span> and start using it, no need to register anywhere.</br>
  We suggest your mail box contains <span class='hl-underline'>at least 6 characters</span> make it a secure one.</br>
@@ -29,5 +29,5 @@
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
-
+<p><img src='/assets/images/oopzybig.png'/></p>
 </div>
