@@ -88,14 +88,6 @@ function waiting(){
 	 $('#wait').html("");
  }
 
-
- var uvOptions = {};
- (function() {
-   var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-   uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/WRmCdhfqqyO0zvAZvjqA.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
- })();
-
 </script>
 <link rel="stylesheet" type="text/css" href="/assets/combined.css.php?r=<?php echo CACHEVER; ?>" />
 
@@ -218,10 +210,10 @@ function waiting(){
 
 <div class='container' id='app'>
       <div> <?php echo $content; ?> </div>
+</div>
 
-<img src="/assets/images/oopzy.png" class="specialImage hidden-phone" />
 <div id="btmfooter"> Copyright &copy; <?php echo date('Y') ; ?> oopzy.com All Rights Reserved</div>
- </div>
+
  <!-- rMY_REVISION -->
 </body>
 </html>
