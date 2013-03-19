@@ -218,9 +218,9 @@ function waiting(){
 
 <div class='container' id='app'>
       <div> <?php echo $content; ?> </div>
- </div>
+
 <img src="/assets/images/oopzy.png" class="specialImage hidden-phone" />
 <div id="btmfooter"> Copyright &copy; <?php echo date('Y') ; ?> oopzy.com All Rights Reserved | rMY_REVISION  </div>
-
+ </div>
 </body>
 </html>
