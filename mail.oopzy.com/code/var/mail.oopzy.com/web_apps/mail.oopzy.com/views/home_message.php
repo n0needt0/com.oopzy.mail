@@ -12,7 +12,7 @@
         padding: 14px 24px;
       }
 </style>
-<div class="jumbotron message">
+<div class="jumbotron message hidden-phone">
 <h1>We fight spam for freedom</h1>
 
 <p class="lead" >
