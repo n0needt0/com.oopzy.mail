@@ -197,7 +197,7 @@ function waiting(){
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="/">Home</a></li>
-              <li><a href="about">About</a></li>
+              <li><a href="/index/about">About</a></li>
               <li><a href="mailto:!nospamfor3ver@oopzy.com">Contact</a></li>
             </ul>
             <a class='brand hidden-phone' id='title'> simply the best :)</a>
