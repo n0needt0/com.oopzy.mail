@@ -37,8 +37,8 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 define('LOGFILENAME','oopzy.log');
-define('CACHEVER',3);
-define('JSDEBUG',1);
+define('CACHEVER',4);
+define('JSDEBUG',0);
 
 define('SITE_NAME', 'oopzy spam fighter single use recycle email');
 define('SERVER_NAME', $_SERVER['SERVER_NAME']);

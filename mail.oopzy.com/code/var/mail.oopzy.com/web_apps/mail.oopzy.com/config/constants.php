@@ -54,15 +54,6 @@ define('SMTP_SSL','');
 define('SMTP_USER', 'mailer@oopzy.com');
 define('SMTP_PASSWORD','Twentytw0');
 
-//TODO
-
-$GLOBALS['namespace'] = 'oopzy';
-$GLOBALS['cache_param'] = 10;
-$GLOBALS['allowed_hosts'] = array('oopzy.com');
-$GLOBALS['mail_from'] = 'mailer@oopzy.com';
-$GLOBALS['PRIVATE_KEY'] = '#27drue';
-$GLOBALS['www_host_name'] = 'mail.oopzy.com';
-
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

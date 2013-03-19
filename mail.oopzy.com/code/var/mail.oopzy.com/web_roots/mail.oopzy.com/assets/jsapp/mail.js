@@ -34,6 +34,7 @@ function( jQuery, Backbone) {
           "click A.saveme" : "saveMe",
           "click A.deleteme" : "deleteMe",
           "keyup .input-mailbox" : "checkMe",
+          "click .input-mailbox" : "checkValue",
           "click .more" : "openUp",
           "click .less" : "closeDown"
          }, 
@@ -47,6 +48,14 @@ function( jQuery, Backbone) {
         render: function () {
             debug('binding to application element: ');
             this.prewire();
+        },
+        
+        checkValue: function(e){
+        	if(Conf.messages.initbox == $(e.currentTarget).val().trim())
+        	{
+        		$(e.currentTarget).val("");
+        	}
+        		
         },
         checkMe: function(e){
         	var res = checkStrength($(e.currentTarget).val());
