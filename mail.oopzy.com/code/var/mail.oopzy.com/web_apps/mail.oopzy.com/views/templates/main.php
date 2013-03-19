@@ -220,7 +220,8 @@ function waiting(){
       <div> <?php echo $content; ?> </div>
 
 <img src="/assets/images/oopzy.png" class="specialImage hidden-phone" />
-<div id="btmfooter"> Copyright &copy; <?php echo date('Y') ; ?> oopzy.com All Rights Reserved | rMY_REVISION  </div>
+<div id="btmfooter"> Copyright &copy; <?php echo date('Y') ; ?> oopzy.com All Rights Reserved</div>
  </div>
+ <!-- rMY_REVISION -->
 </body>
 </html>
