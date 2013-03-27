@@ -155,8 +155,9 @@ function( jQuery, Backbone) {
         		
         		if (!readCookie('rememberme')) {
                 	createCookie('rememberme','1',365);
-                	createCookie('oopzybox',box,365);
                 }
+        		
+        		createCookie('oopzybox',box,365);
         		
                	box = encodeURIComponent(box);
             	var api_url = Conf.api.home + '/api/messages/' + box;
