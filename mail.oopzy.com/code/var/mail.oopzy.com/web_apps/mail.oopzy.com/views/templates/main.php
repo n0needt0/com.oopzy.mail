@@ -22,7 +22,7 @@ Conf.messages = {
         save_3:'Forward all emails from:',
         save_4:'to this email.',
         whycare:'why care?',
-        initbox: 'Enter Your Mail',
+        initbox: 'Enter Your Oopzy',
         invalidfirst:'1st must be alfa numeric',
         nomessages:'No new messages'
       };
@@ -146,6 +146,8 @@ function waiting(){
           background-color: #dceaf4;
           margin: 0 auto;
           width: 100%;
+          padding-left:5px;
+          text-align:left;
         }
         .mini-layout.fluid .mini-layout-sidebar,
         .mini-layout.fluid .mini-layout-header,
@@ -166,18 +168,14 @@ function waiting(){
             font-size: 11px;
             margin-left: auto;
             margin-right: auto;
-            padding-bottom: 10px;
-            padding-top: 10px;
-            text-align: center;
+            padding: 10px;
+            text-align: left;
             width: 100%;
             height:20px;   /* Height of the footer */
          }
 
- .specialImage{
-  position:fixed;
-  bottom:0;
-  left:0;
-  z-index:100; /* or higher/lower depending on other elements */
+  #navbar {
+    width: 100%;
 }
 
 </style>
@@ -187,7 +185,7 @@ function waiting(){
 
 <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container">
+        <div id='navbar' class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>

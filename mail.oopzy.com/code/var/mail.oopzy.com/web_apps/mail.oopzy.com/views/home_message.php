@@ -1,33 +1,37 @@
 <style>
 .jumbotron {
         margin: 40px 0;
-        text-align: center;
+        text-align: left;
       }
       .jumbotron h1 {
-        font-size: 62px;
+        font-size: 32px;
         line-height: 1;
       }
       .jumbotron .btn {
-        font-size: 21px;
+        font-size: 16px;
         padding: 14px 24px;
       }
 </style>
 <div class="jumbotron message hidden-phone">
-<h1>We fight spam for freedom</h1>
-
-<p class="lead" >
- Make up <span class='hl-underline'>ANY</span> <span class='hl-yellow'>address@oopzy.com</span> and start using it, no need to register anywhere.</br>
- We suggest your mail box contains <span class='hl-underline'>at least 6 characters</span> make it a secure one.</br>
- You can choose to save or forward your mails from any given address later...</br>
- <a class='hl-underline'>see how it works in details..</a>
-</p>
-<p class='hidden-phone'><img src='/assets/images/oopzybig.png'/></p>
-<h2>Donate $1 today</h2>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="G8RMAH3HM4NES">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
+<h1>Spam free forever</h1>
+&nbsp;
+<p>
+Everytime you use your  email address you are exposed to spam. Spam will follow you when your email gets sold or stolen. No one is immune. Resistance is Futile...That was true now.
+<p>
+We provide simple and very effective way of stopping unwanted email, even if spammers get hold of your email.
+<p>
+Here how it works:
+<p>
+Install FREE Oopzy Phone app [here]
+<p>
+1. You are asked to register for an account on SuperAwesomeNiceWidgets.com. Give them your public Oopzy email from phone app or just make one up it be waiting for you.
+<p>
+2. Emails from SuperAwesomeNiceWidgets.com will arrive to this account., you can read them from this website or phone app.
+<p>
+3. If you like you can set forwarding of email arriving from SuperAwesomeNiceWidgets.com to this public box.
+<p>
+4.When (Not If) your Oopzy emaill gets spammed,  spam will never get to you, as forwarding is only allowed for SuperAwesomeNiceWidgets.com
+<p>
+5. If you want to stop receiving email from SuperAwesomeNiceWidgets.com just stop forwarding and you are free...
 
 </div>

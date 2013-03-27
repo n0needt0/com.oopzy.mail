@@ -30,10 +30,8 @@ function( jQuery, Backbone) {
         // Delegated events for creating new items, and clearing completed ones.
         events: {
           "click .submit-btn" : "getMessages",
-          "click .rememberme" : "rememberMe",
           "click A.saveme" : "saveMe",
           "click A.deleteme" : "deleteMe",
-          "keyup .input-mailbox" : "checkMe",
           "click .input-mailbox" : "checkValue",
           "click .more" : "openUp",
           "click .less" : "closeDown"
@@ -57,12 +55,6 @@ function( jQuery, Backbone) {
         	}
         		
         },
-        checkMe: function(e){
-        	var res = checkStrength($(e.currentTarget).val());
-            $('#result').removeClass();
-            $('#result').addClass(res);
-    		$('#result').html( Conf.messages[res] + " <a class='whycare'>" + Conf.messages.whycare + "</a>");
-        },
         saveMe: function(e){
     		Conf.ref = $(e.currentTarget).attr('ref');
     		Conf.autofrom = $(e.currentTarget).attr('from');
@@ -79,18 +71,15 @@ function( jQuery, Backbone) {
     	},        
         prewire: function(e){
 
-        	if($('.rememberme').is(':checked'))
-        	{
-                 var box = readCookie('oopzybox');
-                 if( box.length > 2)
-             	{
-                	 $('#mailbox').val(box);
-                	 setTimeout(function(){
-                	 $('.submit-btn').trigger('click');
-                	 },2000);
-             	}
-        	}
-        	
+        	var box = readCookie('oopzybox');
+            if( box.length > 2)
+            {
+                $('#mailbox').val(box);
+                setTimeout(function(){
+                $('.submit-btn').trigger('click');
+                },2000);
+            }
+                 
         	$('#savepop').append(Conf.JST['tl/save'](Conf.messages));
             $( "#save-confirm" ).dialog({
             	autoOpen: false,
@@ -111,7 +100,7 @@ function( jQuery, Backbone) {
                             	
                             	var auto = { ref: Conf.ref, to: $('#remailto').val() };
                             	
-                            	if($('.rememberme').is(':checked'))
+                            	if(readCookie('rememberme'))
                             	{
                             	    auto['auto'] = 'yes';
                             	    auto['autofrom'] = Conf.autofrom;
@@ -156,28 +145,18 @@ function( jQuery, Backbone) {
                     	}
                 	}
             	});
-        }
-        ,
-        //this changes remember me cookie
-        rememberMe: function(e){
-        	var $this = $(e.currentTarget);
-            if ($this.is(':checked')) {
-            	createCookie('rememberme','1',365);
-            } else {
-            	eraseCookie('rememberme');
-            }
         },
         getMessages: function(e){
-
+        	
         	try{
                 
         		//var p = waiting();
         		var box = $('.input-mailbox').val();
         		
-               	if($('.rememberme').is(':checked'))
-            	{
-               		createCookie('oopzybox',box,365);
-            	}
+        		if (!readCookie('rememberme')) {
+                	createCookie('rememberme','1',365);
+                	createCookie('oopzybox',box,365);
+                }
         		
                	box = encodeURIComponent(box);
             	var api_url = Conf.api.home + '/api/messages/' + box;

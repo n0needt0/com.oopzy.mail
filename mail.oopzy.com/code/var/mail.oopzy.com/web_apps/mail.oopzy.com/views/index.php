@@ -5,7 +5,7 @@
             margin-right: auto;
             padding-bottom: 10px;
             padding-top: 10px;
-            text-align: center;
+            text-align: left;
             width: 100%;
       }
 
@@ -96,6 +96,10 @@ SPAN.good{
 	color:#006400;
 }
 
+.container{
+width:100%;
+}
+
 </style>
 
 <script>
@@ -155,10 +159,8 @@ head.appendChild(link);
 <div class="mini-layout navbar">
     <div class="mini-layout-body">
       <div id='form' class='form-inline'>
-        <span id="result"></span><input id='mailbox' class='input-mailbox' value='<?php echo $box;?>'><span id='label'>@<?php echo HOST_NAME; ?></span></input><button id='submit' class='submit-btn btn btn-success btn-large'> <i class="icon-envelope"></i> receive </button>
-        <label class="checkbox">
-            <input type="checkbox" id='rememberme' class='rememberme' <?php echo $rememberme;?>> Remember me
-        </label>
+        <input id='mailbox' class='input-mailbox' value='<?php echo $box;?>'><span id='label'>@<?php echo HOST_NAME; ?></span>
+        <button id='submit' class='submit-btn btn btn-success btn-large'> <i class="icon-envelope"></i> receive </button>
     </div>
 </div>
 <div id='messages'>
