@@ -152,11 +152,8 @@ function( jQuery, Backbone) {
                 
         		//var p = waiting();
         		var box = $('.input-mailbox').val();
-        		
-        		if (!readCookie('rememberme')) {
-                	createCookie('rememberme','1',365);
-                }
-        		
+      
+        		createCookie('rememberme','1',365);
         		createCookie('oopzybox',box,365);
         		
                	box = encodeURIComponent(box);
