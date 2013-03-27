@@ -44,7 +44,7 @@ define('SITE_NAME', 'oopzy spam fighter single use recycle email');
 define('SERVER_NAME', $_SERVER['SERVER_NAME']);
 define('HOST_NAME', 'oopzy.com');
 
-define('REDISHOST', '127.0.0.1');
+define('REDISHOST', 'localhost');
 define('REDISPORT',6379);
 define('REDISDB', 0);
 
