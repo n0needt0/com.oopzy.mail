@@ -91,6 +91,8 @@ namespace :deploy do
     run "cp #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/web_apps/mail.oopzy.com/config/config.#{stage}.php #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/web_apps/mail.oopzy.com/config/config.php"
     
     run "cp #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/web_apps/mail.oopzy.com/config/constants.#{stage}.php #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/web_apps/mail.oopzy.com/config/constants.php"
+    
+    run "cp #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/web_roots/mail.oopzy.com/#{stage}.htaccess #{deploy_to}/current/mail.oopzy.com/code/var/mail.oopzy.com/web_roots/mail.oopzy.com/.htaccess"
   end
   
  desc "get correct smtp2redis"
