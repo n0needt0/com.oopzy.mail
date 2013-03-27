@@ -1,5 +1,3 @@
 RewriteEngine on
 RewriteCond $1 !^(index\.php|favicon\.ico|assets|robots\.txt|healthcheck\.php)
-RewriteCond %{HTTP_HOST} ^oopzy\.com$ [NC]
-RewriteCond %{SERVER_PORT} !^443$ 
-RewriteRule ^(.*)$ http://www.oopzy.com/$1 [R=301,L]
+RewriteRule ^(.*)$ /index.php/$1 [L]
