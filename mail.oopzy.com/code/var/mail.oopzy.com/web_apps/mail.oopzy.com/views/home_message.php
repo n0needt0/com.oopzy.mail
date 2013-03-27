@@ -24,8 +24,10 @@ Here how it works:
 <p>
 Install FREE Oopzy Phone app [here]
 <p>
-1. You are asked to register for an account on SuperAwesomeNiceWidgets.com. Give them your public Oopzy email from phone app or just make one up it be waiting for you.
+1. Say you are asked to register for an account on SuperAwesomeNiceWidgets.com.
+ Give them your public Oopzy email from phone app. You can just make one up and it will be waiting for you. Just try to send email to made up box  @oopzy.com and check it above.
 <p>
+
 2. Emails from SuperAwesomeNiceWidgets.com will arrive to this account., you can read them from this website or phone app.
 <p>
 3. If you like you can set forwarding of email arriving from SuperAwesomeNiceWidgets.com to this public box.
