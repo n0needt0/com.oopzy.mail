@@ -163,17 +163,6 @@ function waiting(){
           margin-left: 2.5%;
         }
 
-        #btmfooter {
-            color: #AAAAAA;
-            font-size: 11px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 10px;
-            text-align: left;
-            width: 100%;
-            height:20px;   /* Height of the footer */
-         }
-
   #navbar {
     width: 100%;
 }
